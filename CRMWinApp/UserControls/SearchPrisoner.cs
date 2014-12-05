@@ -16,7 +16,7 @@ namespace CRMWinApp.UserControls
         CRMDataModel context = new CRMDataModel();
         List<Criminal> criminalList = new List<Criminal>();
 
-        public delegate void PassCriminalDel( Models.Criminal criminal );
+        public delegate void PassCriminalDel(Models.Criminal criminal);
         public PassCriminalDel PassCriminal;
 
 
@@ -27,7 +27,13 @@ namespace CRMWinApp.UserControls
 
         private void SearchPrisoner_Load(object sender, EventArgs e)
         {
+            //Search by Crime Type
+            var r = context.CrimeTypes.Select(x => x.Name);
 
+            List<string> crimeTypeList = new List<string>();
+            crimeTypeList = r.ToList();
+
+            crimeTypeCB.DataSource = crimeTypeList;
         }
 
 
@@ -41,28 +47,28 @@ namespace CRMWinApp.UserControls
 
             newCriminal.Surname = surnameTB.Text;
 
-            if( heightTB.Text == String.Empty )
+            if (heightTB.Text == String.Empty)
                 newCriminal.Height = 0;
             else
                 newCriminal.Height = Int32.Parse(heightTB.Text);
 
-            if( weightTB.Text == String.Empty )
+            if (weightTB.Text == String.Empty)
                 newCriminal.Weight = 0;
             else
                 newCriminal.Weight = Int32.Parse(weightTB.Text);
 
             newCriminal.Gender = genderCB.SelectedItem.ToString();
 
-         
+
             newCriminal.HairColor = (hairColorTB.Text);
 
-       
+
             newCriminal.Race = (raceTB.Text);
 
-        
+
             newCriminal.Country = (countryTB.Text);
 
-   
+
             newCriminal.State = (stateTB.Text);
 
             try
@@ -81,11 +87,11 @@ namespace CRMWinApp.UserControls
 
                 criminalList = result.ToList();
                 dataGridView1.DataSource = criminalList;
-                int lul = 5;
+
             }
-            catch( Exception ex )
+            catch (Exception ex)
             {
-                MessageBox.Show("BAE ERROR SWAG " + ex.Message );
+                MessageBox.Show("BAE ERROR SWAG " + ex.Message);
             }
         }
         bool CheckIfEmpty(TextBox tb)
@@ -106,9 +112,35 @@ namespace CRMWinApp.UserControls
         {
             Criminal selectedCriminal = criminalList[e.RowIndex];
 
-            if( selectedCriminal != null )
+            if (selectedCriminal != null)
             {
                 PassCriminal(selectedCriminal);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var r = context.Arrests.Where(x => x.Type.Name == crimeTypeCB.SelectedText).SingleOrDefault();
+
+                
+
+                
+
+                if( r == null )
+                {
+                    MessageBox.Show("No criminal found.");
+                }
+                else
+                {
+                    criminalList.Clear();
+                    criminalList.Add(r.Criminal);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("u suk" + ex.Message);
             }
         }
     }
