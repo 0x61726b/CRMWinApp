@@ -56,6 +56,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.crimeTypeCB = new System.Windows.Forms.ComboBox();
             this.searchCBTButton = new System.Windows.Forms.Button();
+            this.oneononeCB = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -128,6 +129,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.oneononeCB);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.stateTB);
             this.groupBox2.Controls.Add(this.label8);
@@ -340,6 +342,16 @@
             this.searchCBTButton.UseVisualStyleBackColor = true;
             this.searchCBTButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // oneononeCB
+            // 
+            this.oneononeCB.AutoSize = true;
+            this.oneononeCB.Location = new System.Drawing.Point(603, 44);
+            this.oneononeCB.Name = "oneononeCB";
+            this.oneononeCB.Size = new System.Drawing.Size(94, 17);
+            this.oneononeCB.TabIndex = 4;
+            this.oneononeCB.Text = "One-on-Match";
+            this.oneononeCB.UseVisualStyleBackColor = true;
+            // 
             // SearchPrisoner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,5 +403,6 @@
         private System.Windows.Forms.Button searchCBTButton;
         private System.Windows.Forms.ComboBox crimeTypeCB;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox oneononeCB;
     }
 }

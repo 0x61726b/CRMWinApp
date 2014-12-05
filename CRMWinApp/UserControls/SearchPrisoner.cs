@@ -40,7 +40,7 @@ namespace CRMWinApp.UserControls
         private void submitButton_Click(object sender, EventArgs e)
         {
             Criminal newCriminal = new Criminal();
-
+            List<int> indexOfSearch = new List<int>();
 
             newCriminal.Name = nameTB.Text;
 
@@ -57,7 +57,10 @@ namespace CRMWinApp.UserControls
             else
                 newCriminal.Weight = Int32.Parse(weightTB.Text);
 
-            newCriminal.Gender = genderCB.SelectedItem.ToString();
+            if( genderCB.SelectedItem == null )
+                newCriminal.Gender = String.Empty;
+            else
+                newCriminal.Gender = genderCB.SelectedItem.ToString();
 
 
             newCriminal.HairColor = (hairColorTB.Text);
@@ -71,22 +74,42 @@ namespace CRMWinApp.UserControls
 
             newCriminal.State = (stateTB.Text);
 
+            indexOfSearch.Add(1);
+            indexOfSearch.Add(1);
+            indexOfSearch.Add(0);
+            indexOfSearch.Add(0);
+            indexOfSearch.Add(0);
+            indexOfSearch.Add(0);
+            indexOfSearch.Add(0);
+            indexOfSearch.Add(0);
+            indexOfSearch.Add(0);
+            int total = indexOfSearch.Count;
+
             try
             {
-                var result = context.Criminals.Where(
-                                        x => x.Name == newCriminal.Name ||
-                                             x.Surname == newCriminal.Surname ||
-                                             x.Height == newCriminal.Height ||
-                                             x.Weight == newCriminal.Weight ||
-                                             x.Gender == newCriminal.Gender ||
-                                             x.HairColor == newCriminal.HairColor ||
-                                             x.Race == newCriminal.Race ||
-                                             x.Country == newCriminal.Country ||
-                                             x.State == newCriminal.State
-                                        );
+                if (!oneononeCB.Checked)
+                {
+                    var result = context.Criminals.Where(
+                        x => x.Name == newCriminal.Name ||
+                                                 x.Surname == newCriminal.Surname ||
+                                                 x.Height == newCriminal.Height ||
+                                                 x.Weight == newCriminal.Weight ||
+                                                 x.Gender == newCriminal.Gender ||
+                                                 x.HairColor == newCriminal.HairColor ||
+                                                 x.Race == newCriminal.Race ||
+                                                 x.Country == newCriminal.Country ||
+                                                 x.State == newCriminal.State
+                                            );
 
-                criminalList = result.ToList();
-                dataGridView1.DataSource = criminalList;
+                    criminalList = result.ToList();
+                    dataGridView1.DataSource = criminalList;
+
+                }
+                else
+                {
+                    //TO FUCKING DO : ADD INTENSIVE SEARCH 
+
+                }
 
             }
             catch (Exception ex)
@@ -124,11 +147,11 @@ namespace CRMWinApp.UserControls
             {
                 var r = context.Arrests.Where(x => x.Type.Name == crimeTypeCB.SelectedText).SingleOrDefault();
 
-                
 
-                
 
-                if( r == null )
+
+
+                if (r == null)
                 {
                     MessageBox.Show("No criminal found.");
                 }
