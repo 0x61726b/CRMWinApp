@@ -54,6 +54,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.userTsLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.userTsType = new System.Windows.Forms.ToolStripStatusLabel();
+            this.backButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.TopFlowLayoutPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -112,6 +113,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.backButton);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
@@ -278,6 +280,16 @@
             this.userTsType.Size = new System.Drawing.Size(118, 17);
             this.userTsType.Text = "toolStripStatusLabel2";
             // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(925, 61);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 1;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,6 +345,7 @@
         private System.Windows.Forms.ToolStripStatusLabel userTsLabel;
         private System.Windows.Forms.ToolStripStatusLabel userTsType;
         private System.Windows.Forms.Button CriminalListButton;
+        private System.Windows.Forms.Button backButton;
 
     }
 }

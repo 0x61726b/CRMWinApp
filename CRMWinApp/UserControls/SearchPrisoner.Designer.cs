@@ -1,4 +1,5 @@
-﻿namespace CRMWinApp.UserControls
+﻿
+namespace CRMWinApp.UserControls
 {
     partial class SearchPrisoner
     {

@@ -12,8 +12,8 @@ namespace CRMWinApp.Models
 
         public virtual Attorney Attorney { get;set; }
 
-        public Criminal Against { get;set; }
+        public virtual Criminal Against { get;set; }
 
-        public Cite Cite { get;set; }
+        public virtual Cite Cite { get;set; }
     }
 }

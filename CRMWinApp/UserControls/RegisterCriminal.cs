@@ -14,7 +14,8 @@ namespace CRMWinApp.UserControls
     {
         public delegate void PassUser( Criminal c );
         public PassUser passControl;
-
+        public delegate void ControlUpdateDel( UserControl uc);
+        public ControlUpdateDel PassControl;
         CRMDataModel context = new CRMDataModel();
         public RegisterCriminal()
         {
@@ -70,7 +71,10 @@ namespace CRMWinApp.UserControls
                 MessageBox.Show("Criminal Added succesfully.");
 
                 if( passControl != null )
+                {
                     passControl( newCriminal );
+                    PassControl(this);
+                }
             }
             catch( Exception ex )
             {

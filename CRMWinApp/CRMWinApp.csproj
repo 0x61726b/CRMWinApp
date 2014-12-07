@@ -164,6 +164,10 @@
     <Compile Include="Migrations\201412032116190_CRMModel17.Designer.cs">
       <DependentUpon>201412032116190_CRMModel17.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412071912275_CRMModel18.cs" />
+    <Compile Include="Migrations\201412071912275_CRMModel18.Designer.cs">
+      <DependentUpon>201412071912275_CRMModel18.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -183,6 +187,12 @@
     </Compile>
     <Compile Include="UserControls\ArrestUC.Designer.cs">
       <DependentUpon>ArrestUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ChargeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ChargeUC.Designer.cs">
+      <DependentUpon>ChargeUC.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CriminalList.cs">
       <SubType>UserControl</SubType>
@@ -277,6 +287,9 @@
     <EmbeddedResource Include="Migrations\201412032116190_CRMModel17.resx">
       <DependentUpon>201412032116190_CRMModel17.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412071912275_CRMModel18.resx">
+      <DependentUpon>201412071912275_CRMModel18.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -289,6 +302,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\ArrestUC.resx">
       <DependentUpon>ArrestUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ChargeUC.resx">
+      <DependentUpon>ChargeUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CriminalList.resx">
       <DependentUpon>CriminalList.cs</DependentUpon>

@@ -13,17 +13,15 @@ namespace CRMWinApp.Models
 
         public virtual CrimeType Type { get;set; }
 
-        public Criminal Criminal { get;set; }
+        public virtual Criminal Criminal { get;set; }
 
         public string Location { get;set; }
 
         public DateTime Date { get;set; }
 
-        public Agency Agency { get;set; }
+        public virtual Agency Agency { get;set; }
 
         public string Description { get;set; }
-
-        public virtual ICollection<Charge> Charges { get; set; }
 
     }
 }

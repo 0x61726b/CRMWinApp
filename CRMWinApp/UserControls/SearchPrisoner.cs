@@ -9,15 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRMWinApp.Models;
 
+
 namespace CRMWinApp.UserControls
 {
-    public partial class SearchPrisoner :UserControl
+    public partial class SearchPrisoner : UserControl
     {
         CRMDataModel context = new CRMDataModel();
         List<Criminal> criminalList = new List<Criminal>();
 
         public delegate void PassCriminalDel(Models.Criminal criminal);
         public PassCriminalDel PassCriminal;
+
+        public delegate void ControlUpdateDel( UserControl uc);
+        public ControlUpdateDel PassControl;
 
 
         public SearchPrisoner()
@@ -138,6 +142,7 @@ namespace CRMWinApp.UserControls
             if (selectedCriminal != null)
             {
                 PassCriminal(selectedCriminal);
+                PassControl( this );
             }
         }
 

@@ -15,6 +15,9 @@ namespace CRMWinApp.UserControls
         public delegate void PassCriminalDel( Models.Criminal criminal );
         public PassCriminalDel PassCriminal;
 
+        public delegate void ControlUpdateDel( UserControl uc);
+        public ControlUpdateDel PassControl;
+
         CRMDataModel context = new CRMDataModel();
         List<Models.Criminal> iCriminalList = new List<Models.Criminal>();
         public CriminalList()
@@ -42,6 +45,7 @@ namespace CRMWinApp.UserControls
             if( PassCriminal != null )
             {
                 PassCriminal( selectedCriminal );
+                PassControl( this );
             }
         }
 

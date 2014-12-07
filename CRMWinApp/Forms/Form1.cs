@@ -21,14 +21,22 @@ namespace CRMWinApp
         Administrator = 4,
         Judge = 5
     }
+
     public partial class MainForm :Form
     {
         CRMDataModel context = new CRMDataModel();
+
+        List<Control> lastControls = new List<Control>();
         public MainForm()
         {
             InitializeComponent();
         }
 
+        void UpdateLatestControls(Control control)
+        {
+            if( control != null )
+                lastControls.Add(control);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             userTsLabel.Text = "Welcum frend," + cLoggedUser.Name;
@@ -37,8 +45,8 @@ namespace CRMWinApp
             {
                 userTsType.Text = "User Type: Jail Superintendent";
             }
-            //int s = context.Users.Count();
-            //MessageBox.Show(s.ToString());
+
+
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -118,15 +126,22 @@ namespace CRMWinApp
 
         private void RegisterCriminal_Click(object sender, EventArgs e)
         {
+            if ( MidPanel.Controls.Count > 0 )
+                UpdateLatestControls( MidPanel.Controls[MidPanel.Controls.Count - 1 ] );
+
             ClearPanel();
+
+
 
             RegisterCriminal rc = new RegisterCriminal();
             rc.Dock = DockStyle.Fill;
             rc.passControl = new UserControls.RegisterCriminal.PassUser(OnNewCriminalRegistered);
+            rc.PassControl = new UserControls.RegisterCriminal.ControlUpdateDel(UpdateLatestControls);
             MidPanel.Controls.Add(rc);
         }
         void ClearPanel()
         {
+          
             MidPanel.Controls.Clear();
         }
 
@@ -149,6 +164,7 @@ namespace CRMWinApp
             ClearPanel();
             CriminalList edc = new CriminalList();
             edc.PassCriminal = new CriminalList.PassCriminalDel(OnCriminalListClicked);
+            edc.PassControl = new CriminalList.ControlUpdateDel(UpdateLatestControls);
             edc.Dock = DockStyle.Fill;
 
             MidPanel.Controls.Add(edc);
@@ -156,12 +172,23 @@ namespace CRMWinApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+             UpdateLatestControls( MidPanel.Controls[MidPanel.Controls.Count - 1] );
             ClearPanel();
             SearchPrisoner sc = new SearchPrisoner();
             sc.PassCriminal = new SearchPrisoner.PassCriminalDel(OnCriminalListClicked);
+            sc.PassControl = new SearchPrisoner.ControlUpdateDel(UpdateLatestControls);
             sc.Dock = DockStyle.Fill;
 
-            MidPanel.Controls.Add( sc );
+            MidPanel.Controls.Add(sc);
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            if (lastControls.Count > 0)
+            {
+                ClearPanel();
+                MidPanel.Controls.Add(lastControls.Last());
+            }
         }
     }
 }

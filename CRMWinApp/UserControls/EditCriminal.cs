@@ -13,6 +13,9 @@ namespace CRMWinApp.UserControls
     public partial class EditCriminal : UserControl
     {
         private Models.Criminal selectedCriminal;
+
+
+
         public EditCriminal()
         {
             InitializeComponent();
