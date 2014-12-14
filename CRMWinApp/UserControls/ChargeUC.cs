@@ -30,7 +30,7 @@ namespace CRMWinApp.UserControls
             citeTypeCB.SelectedText = _charge.Cite.Type.Name;
             attorneyCB.SelectedText = _charge.Attorney.Name + " " + _charge.Attorney.Surname;
             citeNoteTB.Text = _charge.Cite.Note;
-
+            dateTimePicker1.Value = _charge.Date;
         }
     }
 }

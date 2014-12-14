@@ -10,9 +10,17 @@ using System.Windows.Forms;
 
 namespace CRMWinApp.UserControls
 {
-    public partial class RegisterArrest :UserControl
+    public partial class PermissionedButton :UserControl
     {
-        public RegisterArrest()
+        private string buttonName;
+
+        public string ButtonName
+        {
+            get { return buttonName; }
+            set { buttonName = value; button1.Text = buttonName;}
+        }
+        
+        public PermissionedButton()
         {
             InitializeComponent();
         }

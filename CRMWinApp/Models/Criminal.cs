@@ -25,6 +25,7 @@ namespace CRMWinApp.Models
         public DateTime CustodyStart { get;set; }
         public DateTime CustodyEnd { get;set; }
 
+        public virtual ICollection<Meeting> Meetings { get;set; }
 
     }
 }

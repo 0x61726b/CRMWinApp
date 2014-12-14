@@ -40,6 +40,13 @@ namespace CRMWinApp
 
         public virtual DbSet<Models.Arrest> Arrests { get;set; }
 
+        public virtual DbSet<Models.Cell> Cells { get;set; }
+
+        public virtual DbSet<Models.Jail> Jails { get;set; }
+
+        public virtual DbSet<Models.Outsider> Outsiders { get;set; }
+
+        public virtual DbSet<Models.Meeting> Meetings { get;set; }
         
     }
 

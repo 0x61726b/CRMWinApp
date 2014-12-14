@@ -15,5 +15,7 @@ namespace CRMWinApp.Models
         public virtual Criminal Against { get;set; }
 
         public virtual Cite Cite { get;set; }
+
+        public DateTime Date { get;set; }
     }
 }

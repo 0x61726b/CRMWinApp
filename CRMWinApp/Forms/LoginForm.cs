@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpDX.Windows;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CRMWinApp.Forms
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm :Form
     {
         CRMDataModel context = new CRMDataModel();
         public LoginForm()
@@ -33,10 +34,20 @@ namespace CRMWinApp.Forms
                 if (q != null)
                 {
                     MainForm mf = new MainForm();
+
                     mf.SetUser((Models.User)q);
+
                     mf.Show();
 
                     this.Hide();
+
+                    RenderLoop.RenderCallback callback = new RenderLoop.RenderCallback(mf.Render);
+                    RenderLoop.Run(mf, () =>
+                        {
+                            mf.Render();
+                        }
+                    );
+
                 }
                 else
                 {
@@ -50,8 +61,8 @@ namespace CRMWinApp.Forms
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
-            string userName = "Jeyjey";
-            string pass = "safsafsaf";
+            string userName = "arkenthera";
+            string pass = "123";
 
             if (userName == String.Empty || pass == String.Empty)
             {
@@ -63,10 +74,20 @@ namespace CRMWinApp.Forms
                 if (q != null)
                 {
                     MainForm mf = new MainForm();
+
                     mf.SetUser((Models.User)q);
+
                     mf.Show();
 
                     this.Hide();
+
+                    RenderLoop.RenderCallback callback = new RenderLoop.RenderCallback(mf.Render);
+                    RenderLoop.Run(mf, () =>
+                        {
+                            mf.Render();
+                        }
+                    );
+
                 }
                 else
                 {

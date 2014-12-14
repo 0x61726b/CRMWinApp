@@ -32,6 +32,7 @@
         private void InitializeComponent()
         {
             this.topGroupBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.custodyEndDT = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@
             // 
             // topGroupBox
             // 
+            this.topGroupBox.Controls.Add(this.button1);
             this.topGroupBox.Controls.Add(this.groupBox3);
             this.topGroupBox.Controls.Add(this.groupBox2);
             this.topGroupBox.Controls.Add(this.Identifying);
@@ -75,6 +77,16 @@
             this.topGroupBox.TabIndex = 0;
             this.topGroupBox.TabStop = false;
             this.topGroupBox.Text = "Edit Criminal";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(496, 312);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 23);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Update";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox3
             // 
@@ -356,5 +368,6 @@
         private System.Windows.Forms.TextBox heightTB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }

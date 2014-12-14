@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>a03d2aac</NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -37,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +57,18 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX">
+      <HintPath>$(SharpDXPackageBinDir)\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11">
+      <HintPath>$(SharpDXPackageBinDir)\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI">
+      <HintPath>$(SharpDXPackageBinDir)\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Toolkit">
+      <HintPath>$(SharpDXPackageBinDir)\SharpDX.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -92,6 +106,8 @@
     <Compile Include="Forms\UserPermissions.Designer.cs">
       <DependentUpon>UserPermissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globals\EPermission.cs" />
+    <Compile Include="IUserPermissionDisable.cs" />
     <Compile Include="Migrations\201412021631176_CRMModel.cs" />
     <Compile Include="Migrations\201412021631176_CRMModel.Designer.cs">
       <DependentUpon>201412021631176_CRMModel.cs</DependentUpon>
@@ -168,20 +184,42 @@
     <Compile Include="Migrations\201412071912275_CRMModel18.Designer.cs">
       <DependentUpon>201412071912275_CRMModel18.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412111305387_CRMModel19.cs" />
+    <Compile Include="Migrations\201412111305387_CRMModel19.Designer.cs">
+      <DependentUpon>201412111305387_CRMModel19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412111328260_CRMModel20.cs" />
+    <Compile Include="Migrations\201412111328260_CRMModel20.Designer.cs">
+      <DependentUpon>201412111328260_CRMModel20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412111330268_CRMModel21.cs" />
+    <Compile Include="Migrations\201412111330268_CRMModel21.Designer.cs">
+      <DependentUpon>201412111330268_CRMModel21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412111348560_CRMModel22.cs" />
+    <Compile Include="Migrations\201412111348560_CRMModel22.Designer.cs">
+      <DependentUpon>201412111348560_CRMModel22.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\Attorney.cs" />
     <Compile Include="Models\AuthLevel_Permission.cs" />
+    <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\Charge.cs" />
     <Compile Include="Models\Cite.cs" />
     <Compile Include="Models\Arrest.cs" />
     <Compile Include="Models\CrimeType.cs" />
     <Compile Include="Models\Criminal.cs" />
     <Compile Include="Models\CiteType.cs" />
+    <Compile Include="Models\Jail.cs" />
+    <Compile Include="Models\Meeting.cs" />
+    <Compile Include="Models\Outsider.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\Box.cs" />
+    <Compile Include="Rendering\Map.cs" />
     <Compile Include="UserControls\ArrestUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -206,11 +244,29 @@
     <Compile Include="UserControls\EditCriminal.Designer.cs">
       <DependentUpon>EditCriminal.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RegisterArrest.cs">
+    <Compile Include="UserControls\ManageUsersUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RegisterArrest.Designer.cs">
-      <DependentUpon>RegisterArrest.cs</DependentUpon>
+    <Compile Include="UserControls\ManageUsersUC.Designer.cs">
+      <DependentUpon>ManageUsersUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MeetingItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MeetingItem.Designer.cs">
+      <DependentUpon>MeetingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MeetingRight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MeetingRight.Designer.cs">
+      <DependentUpon>MeetingRight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PermissionedButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PermissionedButton.Designer.cs">
+      <DependentUpon>PermissionedButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\RegisterCriminal.cs">
       <SubType>UserControl</SubType>
@@ -218,12 +274,19 @@
     <Compile Include="UserControls\RegisterCriminal.Designer.cs">
       <DependentUpon>RegisterCriminal.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RenderUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RenderUC.Designer.cs">
+      <DependentUpon>RenderUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SearchPrisoner.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\SearchPrisoner.Designer.cs">
       <DependentUpon>SearchPrisoner.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserTypeEnum.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +353,18 @@
     <EmbeddedResource Include="Migrations\201412071912275_CRMModel18.resx">
       <DependentUpon>201412071912275_CRMModel18.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412111305387_CRMModel19.resx">
+      <DependentUpon>201412111305387_CRMModel19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412111328260_CRMModel20.resx">
+      <DependentUpon>201412111328260_CRMModel20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412111330268_CRMModel21.resx">
+      <DependentUpon>201412111330268_CRMModel21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412111348560_CRMModel22.resx">
+      <DependentUpon>201412111348560_CRMModel22.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -312,11 +387,23 @@
     <EmbeddedResource Include="UserControls\EditCriminal.resx">
       <DependentUpon>EditCriminal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RegisterArrest.resx">
-      <DependentUpon>RegisterArrest.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ManageUsersUC.resx">
+      <DependentUpon>ManageUsersUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MeetingItem.resx">
+      <DependentUpon>MeetingItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MeetingRight.resx">
+      <DependentUpon>MeetingRight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PermissionedButton.resx">
+      <DependentUpon>PermissionedButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegisterCriminal.resx">
       <DependentUpon>RegisterCriminal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RenderUC.resx">
+      <DependentUpon>RenderUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchPrisoner.resx">
       <DependentUpon>SearchPrisoner.cs</DependentUpon>
@@ -333,6 +420,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Shaders\VertexColorShader.fxo" />
+    <None Include="Shaders\VertexPixelShader.fxo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -357,12 +446,40 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Shaders\VertexColorShader.hlsl" />
+    <Content Include="Shaders\VertexPixelShader.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Textures\Asami.jpg" />
+    <Content Include="Textures\prison_2f.jpg" />
+    <Content Include="Textures\texture.dds" />
+    <Content Include="Textures\Untitled.jpg" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SharpDX.2.6.3\build\SharpDX.targets" Condition="Exists('..\packages\SharpDX.2.6.3\build\SharpDX.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SharpDX.2.6.3\build\SharpDX.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SharpDX.2.6.3\build\SharpDX.targets'))" />
+    <Error Condition="!Exists('..\packages\SharpDX.Toolkit.2.6.3\build\SharpDX.Toolkit.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SharpDX.Toolkit.2.6.3\build\SharpDX.Toolkit.targets'))" />
+  </Target>
+  <Import Project="..\packages\SharpDX.Toolkit.2.6.3\build\SharpDX.Toolkit.targets" Condition="Exists('..\packages\SharpDX.Toolkit.2.6.3\build\SharpDX.Toolkit.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(DXSDK_DIR)Utilities\bin\x86\"fxc.exe  /T fx_4_0 /Fo "../../Shaders/VertexPixelShader.fxo" "../../Shaders/VertexPixelShader.hlsl"
+"$(DXSDK_DIR)Utilities\bin\x86\"fxc.exe  /T fx_4_0 /Fo "../../Shaders/VertexColorShader.fxo" "../../Shaders/VertexColorShader.hlsl"</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>
+<UsingTask TaskName="MSBuild.Fxc.CompileShader" AssemblyFile="MSBuild.Fxc.dll" />
+<Target Name="BeforeBuild">
+  <CompileShader InputFiles="@(Hlsl)" OutputPath="$(OutputPath)" />
+</Target>
   -->
 </Project>

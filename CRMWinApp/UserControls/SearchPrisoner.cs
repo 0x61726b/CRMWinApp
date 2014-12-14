@@ -12,7 +12,7 @@ using CRMWinApp.Models;
 
 namespace CRMWinApp.UserControls
 {
-    public partial class SearchPrisoner : UserControl
+    public partial class SearchPrisoner : UserControl,IUserPermissionDisable
     {
         CRMDataModel context = new CRMDataModel();
         List<Criminal> criminalList = new List<Criminal>();
@@ -170,6 +170,19 @@ namespace CRMWinApp.UserControls
             {
                 MessageBox.Show("u suk" + ex.Message);
             }
+        }
+
+        public void Disable(List<Permission> permissions)
+        {
+            bool t = false;
+            foreach( Permission p in permissions )
+            {
+                if( p.Name == "CAN_SEARCH_CRIMINAL_CRIME" )
+                {
+                    t = true;
+                }
+            }
+            groupBox1.Enabled = t;
         }
     }
 }

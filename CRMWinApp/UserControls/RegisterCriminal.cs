@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using CRMWinApp.Models;
 namespace CRMWinApp.UserControls
 {
-    public partial class RegisterCriminal :UserControl
+    public partial class RegisterCriminal :UserControl , IUserPermissionDisable
     {
         public delegate void PassUser( Criminal c );
         public PassUser passControl;
@@ -94,6 +94,15 @@ namespace CRMWinApp.UserControls
         void ShowMsg()
         {
             MessageBox.Show("Please FILL IN THE BLANKS.");
+        }
+
+        public void Disable(List<Permission> permissions)
+        {
+            foreach( Permission p in permissions )
+            {
+                if( p.Name != "CAN_REGISTER_CRIME_CRIMINAL" )
+                    groupBox1.Enabled = false;
+            }
         }
     }
 }

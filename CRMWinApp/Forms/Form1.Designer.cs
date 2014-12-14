@@ -38,15 +38,21 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TopFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.chargeCountLbl = new System.Windows.Forms.Label();
+            this.arrestCountLbl = new System.Windows.Forms.Label();
+            this.criminalCountLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
             this.UserInfoPanel = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
             this.MidFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.adminPanel = new System.Windows.Forms.GroupBox();
+            this.manageUsersButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.CriminalListButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.RegisterNewCrime = new System.Windows.Forms.Button();
             this.RegisterCriminal = new System.Windows.Forms.Button();
             this.MidPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -54,13 +60,13 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.userTsLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.userTsType = new System.Windows.Forms.ToolStripStatusLabel();
-            this.backButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.TopFlowLayoutPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.UserInfoPanel.SuspendLayout();
             this.MidFlowLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.adminPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -113,23 +119,63 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.chargeCountLbl);
+            this.panel1.Controls.Add(this.arrestCountLbl);
+            this.panel1.Controls.Add(this.criminalCountLbl);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.backButton);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1005, 89);
             this.panel1.TabIndex = 0;
             // 
-            // label2
+            // chargeCountLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(374, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(310, 26);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Cera CRM System Main Panel";
+            this.chargeCountLbl.AutoSize = true;
+            this.chargeCountLbl.Location = new System.Drawing.Point(7, 50);
+            this.chargeCountLbl.Name = "chargeCountLbl";
+            this.chargeCountLbl.Size = new System.Drawing.Size(110, 13);
+            this.chargeCountLbl.TabIndex = 5;
+            this.chargeCountLbl.Text = "Charges Count Today";
+            // 
+            // arrestCountLbl
+            // 
+            this.arrestCountLbl.AutoSize = true;
+            this.arrestCountLbl.Location = new System.Drawing.Point(7, 37);
+            this.arrestCountLbl.Name = "arrestCountLbl";
+            this.arrestCountLbl.Size = new System.Drawing.Size(98, 13);
+            this.arrestCountLbl.TabIndex = 4;
+            this.arrestCountLbl.Text = "Arrest Count Today";
+            // 
+            // criminalCountLbl
+            // 
+            this.criminalCountLbl.AutoSize = true;
+            this.criminalCountLbl.Location = new System.Drawing.Point(7, 24);
+            this.criminalCountLbl.Name = "criminalCountLbl";
+            this.criminalCountLbl.Size = new System.Drawing.Size(80, 13);
+            this.criminalCountLbl.TabIndex = 3;
+            this.criminalCountLbl.Text = "Criminale Count";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(363, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(337, 26);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Cera CRM System Version Alpha";
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(925, 61);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 1;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // UserInfoPanel
             // 
@@ -166,6 +212,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.adminPanel);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 3);
@@ -173,11 +220,35 @@
             this.panel2.Size = new System.Drawing.Size(200, 502);
             this.panel2.TabIndex = 0;
             // 
+            // adminPanel
+            // 
+            this.adminPanel.Controls.Add(this.manageUsersButton);
+            this.adminPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.adminPanel.Enabled = false;
+            this.adminPanel.Location = new System.Drawing.Point(0, 400);
+            this.adminPanel.Name = "adminPanel";
+            this.adminPanel.Size = new System.Drawing.Size(198, 100);
+            this.adminPanel.TabIndex = 5;
+            this.adminPanel.TabStop = false;
+            this.adminPanel.Text = "SecretPanel";
+            this.adminPanel.Visible = false;
+            // 
+            // manageUsersButton
+            // 
+            this.manageUsersButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.manageUsersButton.Location = new System.Drawing.Point(3, 16);
+            this.manageUsersButton.Name = "manageUsersButton";
+            this.manageUsersButton.Size = new System.Drawing.Size(192, 23);
+            this.manageUsersButton.TabIndex = 0;
+            this.manageUsersButton.Text = "Manage Users";
+            this.manageUsersButton.UseVisualStyleBackColor = true;
+            this.manageUsersButton.Click += new System.EventHandler(this.manageUsersButton_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.CriminalListButton);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.RegisterNewCrime);
             this.groupBox1.Controls.Add(this.RegisterCriminal);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -187,10 +258,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actions";
             // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.Location = new System.Drawing.Point(3, 85);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(192, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Prison ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // CriminalListButton
             // 
             this.CriminalListButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CriminalListButton.Location = new System.Drawing.Point(3, 85);
+            this.CriminalListButton.Location = new System.Drawing.Point(3, 62);
             this.CriminalListButton.Name = "CriminalListButton";
             this.CriminalListButton.Size = new System.Drawing.Size(192, 23);
             this.CriminalListButton.TabIndex = 5;
@@ -201,24 +283,13 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 62);
+            this.button1.Location = new System.Drawing.Point(3, 39);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(192, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Search Criminal";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // RegisterNewCrime
-            // 
-            this.RegisterNewCrime.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RegisterNewCrime.Location = new System.Drawing.Point(3, 39);
-            this.RegisterNewCrime.Name = "RegisterNewCrime";
-            this.RegisterNewCrime.Size = new System.Drawing.Size(192, 23);
-            this.RegisterNewCrime.TabIndex = 1;
-            this.RegisterNewCrime.Text = "Register New Crime";
-            this.RegisterNewCrime.UseVisualStyleBackColor = true;
-            this.RegisterNewCrime.Click += new System.EventHandler(this.RegisterNewCrime_Click);
             // 
             // RegisterCriminal
             // 
@@ -280,16 +351,6 @@
             this.userTsType.Size = new System.Drawing.Size(118, 17);
             this.userTsType.Text = "toolStripStatusLabel2";
             // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(925, 61);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
-            this.backButton.TabIndex = 1;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,6 +374,7 @@
             this.UserInfoPanel.ResumeLayout(false);
             this.MidFlowLayoutPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.adminPanel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -333,12 +395,10 @@
         private System.Windows.Forms.FlowLayoutPanel MidFlowLayoutPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button RegisterCriminal;
-        private System.Windows.Forms.Button RegisterNewCrime;
         private System.Windows.Forms.Panel MidPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -346,6 +406,13 @@
         private System.Windows.Forms.ToolStripStatusLabel userTsType;
         private System.Windows.Forms.Button CriminalListButton;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label chargeCountLbl;
+        private System.Windows.Forms.Label arrestCountLbl;
+        private System.Windows.Forms.Label criminalCountLbl;
+        private System.Windows.Forms.GroupBox adminPanel;
+        private System.Windows.Forms.Button manageUsersButton;
 
     }
 }
