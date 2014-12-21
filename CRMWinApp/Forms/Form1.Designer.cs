@@ -38,6 +38,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TopFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.chargeCountLbl = new System.Windows.Forms.Label();
             this.arrestCountLbl = new System.Windows.Forms.Label();
             this.criminalCountLbl = new System.Windows.Forms.Label();
@@ -48,14 +49,33 @@
             this.MidFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.adminPanel = new System.Windows.Forms.GroupBox();
+            this.addAttorney = new System.Windows.Forms.Button();
             this.manageUsersButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.registerCrime = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.CriminalListButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.RegisterCriminal = new System.Windows.Forms.Button();
             this.MidPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.transferBtn = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.searchSurnameTxt = new System.Windows.Forms.TextBox();
+            this.criminalListLB = new System.Windows.Forms.ListBox();
+            this.searchBtn = new System.Windows.Forms.Button();
+            this.searchNameTxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.statusLBL = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cellNoLBL = new System.Windows.Forms.Label();
+            this.criminalPicture = new System.Windows.Forms.PictureBox();
+            this.surnameLBL = new System.Windows.Forms.Label();
+            this.nameLBL = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.userTsLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -68,6 +88,9 @@
             this.panel2.SuspendLayout();
             this.adminPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalPicture)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,6 +142,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.chargeCountLbl);
             this.panel1.Controls.Add(this.arrestCountLbl);
             this.panel1.Controls.Add(this.criminalCountLbl);
@@ -129,6 +153,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1005, 89);
             this.panel1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(834, 60);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Refresh";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // chargeCountLbl
             // 
@@ -222,6 +256,7 @@
             // 
             // adminPanel
             // 
+            this.adminPanel.Controls.Add(this.addAttorney);
             this.adminPanel.Controls.Add(this.manageUsersButton);
             this.adminPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.adminPanel.Enabled = false;
@@ -232,6 +267,17 @@
             this.adminPanel.TabStop = false;
             this.adminPanel.Text = "SecretPanel";
             this.adminPanel.Visible = false;
+            // 
+            // addAttorney
+            // 
+            this.addAttorney.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addAttorney.Location = new System.Drawing.Point(3, 39);
+            this.addAttorney.Name = "addAttorney";
+            this.addAttorney.Size = new System.Drawing.Size(192, 23);
+            this.addAttorney.TabIndex = 1;
+            this.addAttorney.Text = "Add/Edit Attorney";
+            this.addAttorney.UseVisualStyleBackColor = true;
+            this.addAttorney.Click += new System.EventHandler(this.addAttorney_Click);
             // 
             // manageUsersButton
             // 
@@ -246,6 +292,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.registerCrime);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.CriminalListButton);
             this.groupBox1.Controls.Add(this.button1);
@@ -253,15 +300,26 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(198, 159);
+            this.groupBox1.Size = new System.Drawing.Size(198, 190);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actions";
             // 
+            // registerCrime
+            // 
+            this.registerCrime.Dock = System.Windows.Forms.DockStyle.Top;
+            this.registerCrime.Location = new System.Drawing.Point(3, 120);
+            this.registerCrime.Name = "registerCrime";
+            this.registerCrime.Size = new System.Drawing.Size(192, 23);
+            this.registerCrime.TabIndex = 7;
+            this.registerCrime.Text = "Register Crime";
+            this.registerCrime.UseVisualStyleBackColor = true;
+            this.registerCrime.Click += new System.EventHandler(this.registerCrime_Click);
+            // 
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Location = new System.Drawing.Point(3, 85);
+            this.button2.Location = new System.Drawing.Point(3, 97);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(192, 23);
             this.button2.TabIndex = 6;
@@ -272,7 +330,7 @@
             // CriminalListButton
             // 
             this.CriminalListButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CriminalListButton.Location = new System.Drawing.Point(3, 62);
+            this.CriminalListButton.Location = new System.Drawing.Point(3, 74);
             this.CriminalListButton.Name = "CriminalListButton";
             this.CriminalListButton.Size = new System.Drawing.Size(192, 23);
             this.CriminalListButton.TabIndex = 5;
@@ -283,7 +341,7 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 39);
+            this.button1.Location = new System.Drawing.Point(3, 51);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(192, 23);
             this.button1.TabIndex = 3;
@@ -296,7 +354,7 @@
             this.RegisterCriminal.Dock = System.Windows.Forms.DockStyle.Top;
             this.RegisterCriminal.Location = new System.Drawing.Point(3, 16);
             this.RegisterCriminal.Name = "RegisterCriminal";
-            this.RegisterCriminal.Size = new System.Drawing.Size(192, 23);
+            this.RegisterCriminal.Size = new System.Drawing.Size(192, 35);
             this.RegisterCriminal.TabIndex = 2;
             this.RegisterCriminal.Text = "Register Criminal";
             this.RegisterCriminal.UseVisualStyleBackColor = true;
@@ -314,11 +372,183 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.groupBox2);
+            this.panel3.Controls.Add(this.statusLBL);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.cellNoLBL);
+            this.panel3.Controls.Add(this.criminalPicture);
+            this.panel3.Controls.Add(this.surnameLBL);
+            this.panel3.Controls.Add(this.nameLBL);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(1013, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 502);
             this.panel3.TabIndex = 2;
+            this.panel3.Visible = false;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.transferBtn);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.searchSurnameTxt);
+            this.groupBox2.Controls.Add(this.criminalListLB);
+            this.groupBox2.Controls.Add(this.searchBtn);
+            this.groupBox2.Controls.Add(this.searchNameTxt);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Location = new System.Drawing.Point(3, 273);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(188, 224);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Transfer a prisoner here";
+            // 
+            // transferBtn
+            // 
+            this.transferBtn.Enabled = false;
+            this.transferBtn.Location = new System.Drawing.Point(100, 87);
+            this.transferBtn.Name = "transferBtn";
+            this.transferBtn.Size = new System.Drawing.Size(75, 23);
+            this.transferBtn.TabIndex = 7;
+            this.transferBtn.Text = "Transfer";
+            this.transferBtn.UseVisualStyleBackColor = true;
+            this.transferBtn.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(24, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Surname";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Name";
+            // 
+            // searchSurnameTxt
+            // 
+            this.searchSurnameTxt.Location = new System.Drawing.Point(82, 52);
+            this.searchSurnameTxt.Name = "searchSurnameTxt";
+            this.searchSurnameTxt.Size = new System.Drawing.Size(100, 20);
+            this.searchSurnameTxt.TabIndex = 4;
+            // 
+            // criminalListLB
+            // 
+            this.criminalListLB.FormattingEnabled = true;
+            this.criminalListLB.Location = new System.Drawing.Point(9, 116);
+            this.criminalListLB.Name = "criminalListLB";
+            this.criminalListLB.Size = new System.Drawing.Size(173, 108);
+            this.criminalListLB.TabIndex = 3;
+            this.criminalListLB.SelectedIndexChanged += new System.EventHandler(this.criminalListLB_SelectedIndexChanged);
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Location = new System.Drawing.Point(27, 87);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(56, 23);
+            this.searchBtn.TabIndex = 2;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
+            // 
+            // searchNameTxt
+            // 
+            this.searchNameTxt.Location = new System.Drawing.Point(82, 26);
+            this.searchNameTxt.Name = "searchNameTxt";
+            this.searchNameTxt.Size = new System.Drawing.Size(100, 20);
+            this.searchNameTxt.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Search";
+            // 
+            // statusLBL
+            // 
+            this.statusLBL.AutoSize = true;
+            this.statusLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.statusLBL.ForeColor = System.Drawing.Color.Red;
+            this.statusLBL.Location = new System.Drawing.Point(81, 57);
+            this.statusLBL.Name = "statusLBL";
+            this.statusLBL.Size = new System.Drawing.Size(0, 20);
+            this.statusLBL.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(29, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Status";
+            // 
+            // cellNoLBL
+            // 
+            this.cellNoLBL.AutoSize = true;
+            this.cellNoLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cellNoLBL.Location = new System.Drawing.Point(55, 25);
+            this.cellNoLBL.Name = "cellNoLBL";
+            this.cellNoLBL.Size = new System.Drawing.Size(70, 26);
+            this.cellNoLBL.TabIndex = 6;
+            this.cellNoLBL.Text = "label4";
+            // 
+            // criminalPicture
+            // 
+            this.criminalPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.criminalPicture.Location = new System.Drawing.Point(19, 85);
+            this.criminalPicture.Name = "criminalPicture";
+            this.criminalPicture.Size = new System.Drawing.Size(159, 128);
+            this.criminalPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.criminalPicture.TabIndex = 5;
+            this.criminalPicture.TabStop = false;
+            // 
+            // surnameLBL
+            // 
+            this.surnameLBL.AutoSize = true;
+            this.surnameLBL.Location = new System.Drawing.Point(125, 248);
+            this.surnameLBL.Name = "surnameLBL";
+            this.surnameLBL.Size = new System.Drawing.Size(0, 13);
+            this.surnameLBL.TabIndex = 3;
+            // 
+            // nameLBL
+            // 
+            this.nameLBL.AutoSize = true;
+            this.nameLBL.Location = new System.Drawing.Point(125, 225);
+            this.nameLBL.Name = "nameLBL";
+            this.nameLBL.Size = new System.Drawing.Size(0, 13);
+            this.nameLBL.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 248);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Surname";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 225);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Name";
             // 
             // statusStrip1
             // 
@@ -376,6 +606,11 @@
             this.panel2.ResumeLayout(false);
             this.adminPanel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalPicture)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -413,6 +648,26 @@
         private System.Windows.Forms.Label criminalCountLbl;
         private System.Windows.Forms.GroupBox adminPanel;
         private System.Windows.Forms.Button manageUsersButton;
+        private System.Windows.Forms.PictureBox criminalPicture;
+        private System.Windows.Forms.Label surnameLBL;
+        private System.Windows.Forms.Label nameLBL;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label cellNoLBL;
+        private System.Windows.Forms.Label statusLBL;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox criminalListLB;
+        private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.TextBox searchNameTxt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox searchSurnameTxt;
+        private System.Windows.Forms.Button transferBtn;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button addAttorney;
+        private System.Windows.Forms.Button registerCrime;
 
     }
 }

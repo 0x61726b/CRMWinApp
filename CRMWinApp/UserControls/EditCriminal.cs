@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRMWinApp.Models;
+using System.IO;
 
 namespace CRMWinApp.UserControls
 {
-    public partial class EditCriminal :UserControl, IUserPermissionDisable
+    public partial class EditCriminal : UserControl, IUserPermissionDisable
     {
         private Models.Criminal selectedCriminal;
 
+        private Image frontImage;
+        private Image leftImage;
+        private Image rightImage;
+        private Image noImage;
 
         CRMDataModel context = new CRMDataModel();
         public EditCriminal()
@@ -41,13 +46,38 @@ namespace CRMWinApp.UserControls
 
                 countryTB.Text = selectedCriminal.Country;
                 stateTB.Text = selectedCriminal.State;
-                custodyStartDT.Value = selectedCriminal.CustodyStart;
-                custodyEndDT.Value = selectedCriminal.CustodyEnd;
+
+                noImage = Image.FromFile("..\\..\\Textures\\nophoto.jpg");
+
+                CheckIfImageExist(selectedCriminal.PictureFront, photoFront);
+
+                CheckIfImageExist(selectedCriminal.PictureLeft, photoLeft);
+
+                CheckIfImageExist(selectedCriminal.PictureRight, photoRight);
+
+
             }
             else
             {
                 MessageBox.Show("Invalid Criminal.");
             }
+        }
+        void CheckIfImageExist(byte[] i, PictureBox b)
+        {
+            if (i == null)
+            {
+                b.Image = noImage;
+            }
+            else if (i.Length > 0)
+            {
+                b.Image = ByteToImage(i);
+            }
+        }
+        public Image ByteToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
         }
         void DisableControls(bool t)
         {
@@ -62,7 +92,7 @@ namespace CRMWinApp.UserControls
             DisableControls(false);
             foreach (Permission p in permissions)
             {
-                if( p.Name == "CAN_UPDATE_CRIMINAL_CRIME" )
+                if (p.Name == "CAN_UPDATE_CRIMINAL_CRIME")
                 {
                     DisableControls(true);
                 }
@@ -105,33 +135,81 @@ namespace CRMWinApp.UserControls
                 return;
             selectedCriminal.State = (stateTB.Text);
 
-            selectedCriminal.CustodyStart = custodyStartDT.Value;
-            selectedCriminal.CustodyEnd = custodyEndDT.Value;
+            if (frontImage != null)
+            {
+                byte[] bFrontPicture = ImageToByteArray(frontImage);
+                selectedCriminal.PictureFront = bFrontPicture;
+            }
+            if (leftImage != null)
+            {
+                byte[] bLeftPicture = ImageToByteArray(leftImage);
+                selectedCriminal.PictureLeft = bLeftPicture;
+            }
+            if (rightImage != null)
+            {
+                byte[] bRightPicture = ImageToByteArray(rightImage);
+                selectedCriminal.PictureRight = bRightPicture;
+            }
 
-            
             try
             {
-                
-                context.Entry( context.Criminals.Where( x => x.Id == selectedCriminal.Id ).FirstOrDefault() ).CurrentValues.SetValues( selectedCriminal );
+
+                context.Entry(context.Criminals.Where(x => x.Id == selectedCriminal.Id).FirstOrDefault()).CurrentValues.SetValues(selectedCriminal);
 
 
                 context.SaveChanges();
                 MessageBox.Show("Criminal Updated succesfully.");
 
-               
+
             }
-            catch( Exception ex )
+            catch (Exception ex)
             {
                 MessageBox.Show("U SCREWED UP LULZ " + ex.Message);
             }
         }
-         bool CheckIfEmpty(TextBox tb)
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
+        }
+        bool CheckIfEmpty(TextBox tb)
         {
             if (tb.Text == String.Empty)
             {
                 return true;
             }
             return false;
+        }
+
+        private void photoFront_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Image i = Image.FromFile(openFileDialog1.FileName);
+                frontImage = i;
+                photoFront.Image = i;
+            }
+        }
+
+        private void photoLeft_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Image i = Image.FromFile(openFileDialog1.FileName);
+                leftImage = i;
+                photoLeft.Image = i;
+            }
+        }
+
+        private void photoRight_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Image i = Image.FromFile(openFileDialog1.FileName);
+                rightImage = i;
+                photoRight.Image = i;
+            }
         }
     }
 }

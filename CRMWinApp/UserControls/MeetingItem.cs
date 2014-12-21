@@ -31,16 +31,23 @@ namespace CRMWinApp.UserControls
             if (_cr != null)
             {
                 var meetings = _cr.Meetings.ToList();
-                for (int i = 0; i < meetings.Count; ++i)
+                if (meetings == null || meetings.Count == 0)
                 {
-                    Meeting m = meetings[i];
+                    MessageBox.Show("No records found.");
+                }
+                else
+                {
+                    for (int i = 0; i < meetings.Count; ++i)
+                    {
+                        Meeting m = meetings[i];
 
-                    System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+                        System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             _cr.Name,
             m.Outsider.Name,
             m.Date.ToShortDateString(),
             m.Location,m.Id.ToString()}, -1);
-                    listView1.Items.Add(listViewItem1);
+                        listView1.Items.Add(listViewItem1);
+                    }
                 }
             }
         }

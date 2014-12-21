@@ -33,8 +33,12 @@ namespace CRMWinApp.UserControls
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.searchCBTButton = new System.Windows.Forms.Button();
+            this.crimeTypeCB = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.oneononeCB = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.stateTB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -54,10 +58,6 @@ namespace CRMWinApp.UserControls
             this.heightTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.crimeTypeCB = new System.Windows.Forms.ComboBox();
-            this.searchCBTButton = new System.Windows.Forms.Button();
-            this.oneononeCB = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -96,7 +96,7 @@ namespace CRMWinApp.UserControls
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
@@ -116,6 +116,33 @@ namespace CRMWinApp.UserControls
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Find by Crime Type";
+            // 
+            // searchCBTButton
+            // 
+            this.searchCBTButton.Location = new System.Drawing.Point(429, 20);
+            this.searchCBTButton.Name = "searchCBTButton";
+            this.searchCBTButton.Size = new System.Drawing.Size(191, 23);
+            this.searchCBTButton.TabIndex = 2;
+            this.searchCBTButton.Text = "Search";
+            this.searchCBTButton.UseVisualStyleBackColor = true;
+            this.searchCBTButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // crimeTypeCB
+            // 
+            this.crimeTypeCB.FormattingEnabled = true;
+            this.crimeTypeCB.Location = new System.Drawing.Point(124, 23);
+            this.crimeTypeCB.Name = "crimeTypeCB";
+            this.crimeTypeCB.Size = new System.Drawing.Size(254, 21);
+            this.crimeTypeCB.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 26);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Crime Type";
             // 
             // submitButton
             // 
@@ -142,6 +169,16 @@ namespace CRMWinApp.UserControls
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Location of Record";
+            // 
+            // oneononeCB
+            // 
+            this.oneononeCB.AutoSize = true;
+            this.oneononeCB.Location = new System.Drawing.Point(603, 44);
+            this.oneononeCB.Name = "oneononeCB";
+            this.oneononeCB.Size = new System.Drawing.Size(94, 17);
+            this.oneononeCB.TabIndex = 4;
+            this.oneononeCB.Text = "One-on-Match";
+            this.oneononeCB.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -315,43 +352,6 @@ namespace CRMWinApp.UserControls
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Height";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Crime Type";
-            // 
-            // crimeTypeCB
-            // 
-            this.crimeTypeCB.FormattingEnabled = true;
-            this.crimeTypeCB.Location = new System.Drawing.Point(124, 23);
-            this.crimeTypeCB.Name = "crimeTypeCB";
-            this.crimeTypeCB.Size = new System.Drawing.Size(254, 21);
-            this.crimeTypeCB.TabIndex = 1;
-            // 
-            // searchCBTButton
-            // 
-            this.searchCBTButton.Location = new System.Drawing.Point(429, 20);
-            this.searchCBTButton.Name = "searchCBTButton";
-            this.searchCBTButton.Size = new System.Drawing.Size(191, 23);
-            this.searchCBTButton.TabIndex = 2;
-            this.searchCBTButton.Text = "Search";
-            this.searchCBTButton.UseVisualStyleBackColor = true;
-            this.searchCBTButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // oneononeCB
-            // 
-            this.oneononeCB.AutoSize = true;
-            this.oneononeCB.Location = new System.Drawing.Point(603, 44);
-            this.oneononeCB.Name = "oneononeCB";
-            this.oneononeCB.Size = new System.Drawing.Size(94, 17);
-            this.oneononeCB.TabIndex = 4;
-            this.oneononeCB.Text = "One-on-Match";
-            this.oneononeCB.UseVisualStyleBackColor = true;
             // 
             // SearchPrisoner
             // 

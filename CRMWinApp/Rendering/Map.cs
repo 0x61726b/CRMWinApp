@@ -121,12 +121,22 @@ namespace CRMWinApp.Rendering
             get { return _srvPath; }
             set { _srvPath = value; }
         }
-
+        private bool textureManuallyCreated = false;
         public Map(DeviceContext con)
         {
             context = con;
         }
+        public void CreateTexture(Device device,byte[] img,int w,int h)
+        {
+            Resource t = Texture2D.FromMemory(device, img);
+            
+            
+            ShaderResourceView srv = new ShaderResourceView(device,t);
 
+            _srv = srv;
+            textureManuallyCreated = true;
+
+        }
         public void ConstructGeometry(Device AppDevice)
         {
             var vertexShaderByteCode = ShaderBytecode.CompileFromFile("C:\\Users\\alperen\\Documents\\Visual Studio 2013\\Projects\\CRMWinAppGitRelease\\CRMWinApp\\Shaders\\VertexPixelShader.hlsl", "TextureVertexShader", "vs_4_0", ShaderFlags.None, EffectFlags.None);
@@ -183,14 +193,15 @@ namespace CRMWinApp.Rendering
             pVertexBuffer = vertexBuffer;
             pIndexBuffer = indexBuffer;
 
-            
 
 
+            if (!textureManuallyCreated)
+            {
 
-            Srv = ShaderResourceView.FromFile(
-                 AppDevice,
-                 _srvPath);
-
+                Srv = ShaderResourceView.FromFile(
+                     AppDevice,
+                     _srvPath);
+            }
 
 
             cBuffer = new SharpDX.Direct3D11.Buffer(AppDevice, ArkenConstantBuffer.Size, ResourceUsage.Default, BindFlags.ConstantBuffer, CpuAccessFlags.None, ResourceOptionFlags.None, 0);

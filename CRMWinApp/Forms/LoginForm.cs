@@ -62,7 +62,7 @@ namespace CRMWinApp.Forms
         {
 
             string userName = "arkenthera";
-            string pass = "123";
+            string pass = "1234567";
 
             if (userName == String.Empty || pass == String.Empty)
             {

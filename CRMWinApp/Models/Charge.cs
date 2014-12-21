@@ -16,6 +16,8 @@ namespace CRMWinApp.Models
 
         public virtual Cite Cite { get;set; }
 
+        public virtual Sentence Sentence { get; set; }
+
         public DateTime Date { get;set; }
     }
 }

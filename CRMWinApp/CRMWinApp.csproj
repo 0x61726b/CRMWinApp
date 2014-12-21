@@ -88,6 +88,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRMDataModel.cs" />
+    <Compile Include="Forms\AddNewCrimeType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewCrimeType.Designer.cs">
+      <DependentUpon>AddNewCrimeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FindAtt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FindAtt.Designer.cs">
+      <DependentUpon>FindAtt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,12 +112,20 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SearchCriminal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchCriminal.Designer.cs">
+      <DependentUpon>SearchCriminal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserPermissions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\UserPermissions.Designer.cs">
       <DependentUpon>UserPermissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globals\ByteImage.cs" />
+    <Compile Include="Globals\CriminalViewModel.cs" />
     <Compile Include="Globals\EPermission.cs" />
     <Compile Include="IUserPermissionDisable.cs" />
     <Compile Include="Migrations\201412021631176_CRMModel.cs" />
@@ -200,6 +220,66 @@
     <Compile Include="Migrations\201412111348560_CRMModel22.Designer.cs">
       <DependentUpon>201412111348560_CRMModel22.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412141515293_CRMDataModel.cs" />
+    <Compile Include="Migrations\201412141515293_CRMDataModel.Designer.cs">
+      <DependentUpon>201412141515293_CRMDataModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412171545520_CRMDataModel1.cs" />
+    <Compile Include="Migrations\201412171545520_CRMDataModel1.Designer.cs">
+      <DependentUpon>201412171545520_CRMDataModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412171546270_CRMDataModel2.cs" />
+    <Compile Include="Migrations\201412171546270_CRMDataModel2.Designer.cs">
+      <DependentUpon>201412171546270_CRMDataModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412171549464_CRMDataModel3.cs" />
+    <Compile Include="Migrations\201412171549464_CRMDataModel3.Designer.cs">
+      <DependentUpon>201412171549464_CRMDataModel3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412191716284_CRMDataModel4.cs" />
+    <Compile Include="Migrations\201412191716284_CRMDataModel4.Designer.cs">
+      <DependentUpon>201412191716284_CRMDataModel4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412191746539_CRMDataModel5.cs" />
+    <Compile Include="Migrations\201412191746539_CRMDataModel5.Designer.cs">
+      <DependentUpon>201412191746539_CRMDataModel5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412191753128_CRMDataModel6.cs" />
+    <Compile Include="Migrations\201412191753128_CRMDataModel6.Designer.cs">
+      <DependentUpon>201412191753128_CRMDataModel6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412191952594_CRMDataModel7.cs" />
+    <Compile Include="Migrations\201412191952594_CRMDataModel7.Designer.cs">
+      <DependentUpon>201412191952594_CRMDataModel7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412201407334_CRMDataModel8.cs" />
+    <Compile Include="Migrations\201412201407334_CRMDataModel8.Designer.cs">
+      <DependentUpon>201412201407334_CRMDataModel8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412201408226_CRMDataModel9.cs" />
+    <Compile Include="Migrations\201412201408226_CRMDataModel9.Designer.cs">
+      <DependentUpon>201412201408226_CRMDataModel9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412201436255_CRMDataModel10.cs" />
+    <Compile Include="Migrations\201412201436255_CRMDataModel10.Designer.cs">
+      <DependentUpon>201412201436255_CRMDataModel10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412201506291_CRMDataModel11.cs" />
+    <Compile Include="Migrations\201412201506291_CRMDataModel11.Designer.cs">
+      <DependentUpon>201412201506291_CRMDataModel11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412211334432_CRMDataModel12.cs" />
+    <Compile Include="Migrations\201412211334432_CRMDataModel12.Designer.cs">
+      <DependentUpon>201412211334432_CRMDataModel12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412211357086_CRMDataModel13.cs" />
+    <Compile Include="Migrations\201412211357086_CRMDataModel13.Designer.cs">
+      <DependentUpon>201412211357086_CRMDataModel13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412211404365_CRMDataModel14.cs" />
+    <Compile Include="Migrations\201412211404365_CRMDataModel14.Designer.cs">
+      <DependentUpon>201412211404365_CRMDataModel14.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -215,11 +295,19 @@
     <Compile Include="Models\Meeting.cs" />
     <Compile Include="Models\Outsider.cs" />
     <Compile Include="Models\Permission.cs" />
+    <Compile Include="Models\Sentence.cs" />
+    <Compile Include="Models\Transfer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\Box.cs" />
     <Compile Include="Rendering\Map.cs" />
+    <Compile Include="UserControls\AddAttorney.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddAttorney.Designer.cs">
+      <DependentUpon>AddAttorney.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ArrestUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -268,6 +356,12 @@
     <Compile Include="UserControls\PermissionedButton.Designer.cs">
       <DependentUpon>PermissionedButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RegisterCrime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RegisterCrime.Designer.cs">
+      <DependentUpon>RegisterCrime.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RegisterCriminal.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -287,11 +381,20 @@
       <DependentUpon>SearchPrisoner.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserTypeEnum.cs" />
+    <EmbeddedResource Include="Forms\AddNewCrimeType.resx">
+      <DependentUpon>AddNewCrimeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FindAtt.resx">
+      <DependentUpon>FindAtt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchCriminal.resx">
+      <DependentUpon>SearchCriminal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserPermissions.resx">
       <DependentUpon>UserPermissions.cs</DependentUpon>
@@ -365,6 +468,51 @@
     <EmbeddedResource Include="Migrations\201412111348560_CRMModel22.resx">
       <DependentUpon>201412111348560_CRMModel22.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412141515293_CRMDataModel.resx">
+      <DependentUpon>201412141515293_CRMDataModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412171545520_CRMDataModel1.resx">
+      <DependentUpon>201412171545520_CRMDataModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412171546270_CRMDataModel2.resx">
+      <DependentUpon>201412171546270_CRMDataModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412171549464_CRMDataModel3.resx">
+      <DependentUpon>201412171549464_CRMDataModel3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412191716284_CRMDataModel4.resx">
+      <DependentUpon>201412191716284_CRMDataModel4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412191746539_CRMDataModel5.resx">
+      <DependentUpon>201412191746539_CRMDataModel5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412191753128_CRMDataModel6.resx">
+      <DependentUpon>201412191753128_CRMDataModel6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412191952594_CRMDataModel7.resx">
+      <DependentUpon>201412191952594_CRMDataModel7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412201407334_CRMDataModel8.resx">
+      <DependentUpon>201412201407334_CRMDataModel8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412201408226_CRMDataModel9.resx">
+      <DependentUpon>201412201408226_CRMDataModel9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412201436255_CRMDataModel10.resx">
+      <DependentUpon>201412201436255_CRMDataModel10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412201506291_CRMDataModel11.resx">
+      <DependentUpon>201412201506291_CRMDataModel11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412211334432_CRMDataModel12.resx">
+      <DependentUpon>201412211334432_CRMDataModel12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412211357086_CRMDataModel13.resx">
+      <DependentUpon>201412211357086_CRMDataModel13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412211404365_CRMDataModel14.resx">
+      <DependentUpon>201412211404365_CRMDataModel14.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -375,6 +523,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\AddAttorney.resx">
+      <DependentUpon>AddAttorney.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ArrestUC.resx">
       <DependentUpon>ArrestUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -399,6 +550,9 @@
     <EmbeddedResource Include="UserControls\PermissionedButton.resx">
       <DependentUpon>PermissionedButton.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RegisterCrime.resx">
+      <DependentUpon>RegisterCrime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegisterCriminal.resx">
       <DependentUpon>RegisterCriminal.cs</DependentUpon>
     </EmbeddedResource>
@@ -408,6 +562,7 @@
     <EmbeddedResource Include="UserControls\SearchPrisoner.resx">
       <DependentUpon>SearchPrisoner.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

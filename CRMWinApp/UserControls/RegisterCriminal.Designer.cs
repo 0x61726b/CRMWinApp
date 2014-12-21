@@ -30,12 +30,11 @@
         {
             this.nameTB = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.submitButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.custodyEndDT = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.custodyStartDT = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
+            this.photoRight = new System.Windows.Forms.PictureBox();
+            this.photoLeft = new System.Windows.Forms.PictureBox();
+            this.photoFront = new System.Windows.Forms.PictureBox();
+            this.submitButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.stateTB = new System.Windows.Forms.TextBox();
@@ -55,8 +54,14 @@
             this.heightTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ageTB = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.photoRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoFront)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.Identifying.SuspendLayout();
             this.SuspendLayout();
@@ -70,8 +75,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.submitButton);
             this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.submitButton);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.Identifying);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -82,61 +87,62 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Register New Criminal";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.photoRight);
+            this.groupBox3.Controls.Add(this.photoLeft);
+            this.groupBox3.Controls.Add(this.photoFront);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(3, 206);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(698, 177);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Pictures";
+            // 
+            // photoRight
+            // 
+            this.photoRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.photoRight.Location = new System.Drawing.Point(423, 19);
+            this.photoRight.Name = "photoRight";
+            this.photoRight.Size = new System.Drawing.Size(172, 139);
+            this.photoRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.photoRight.TabIndex = 16;
+            this.photoRight.TabStop = false;
+            this.photoRight.Click += new System.EventHandler(this.photoRight_Click);
+            // 
+            // photoLeft
+            // 
+            this.photoLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.photoLeft.Location = new System.Drawing.Point(217, 19);
+            this.photoLeft.Name = "photoLeft";
+            this.photoLeft.Size = new System.Drawing.Size(172, 139);
+            this.photoLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.photoLeft.TabIndex = 15;
+            this.photoLeft.TabStop = false;
+            this.photoLeft.Click += new System.EventHandler(this.photoLeft_Click);
+            // 
+            // photoFront
+            // 
+            this.photoFront.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.photoFront.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.photoFront.Location = new System.Drawing.Point(11, 19);
+            this.photoFront.Name = "photoFront";
+            this.photoFront.Size = new System.Drawing.Size(172, 139);
+            this.photoFront.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.photoFront.TabIndex = 14;
+            this.photoFront.TabStop = false;
+            this.photoFront.Click += new System.EventHandler(this.photoFront_Click);
+            // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(230, 312);
+            this.submitButton.Location = new System.Drawing.Point(241, 406);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(212, 23);
             this.submitButton.TabIndex = 13;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.custodyEndDT);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.custodyStartDT);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(3, 206);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(698, 100);
-            this.groupBox3.TabIndex = 12;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Criminal Information";
-            // 
-            // custodyEndDT
-            // 
-            this.custodyEndDT.Location = new System.Drawing.Point(153, 59);
-            this.custodyEndDT.Name = "custodyEndDT";
-            this.custodyEndDT.Size = new System.Drawing.Size(200, 20);
-            this.custodyEndDT.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(110, 13);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Custody Starting Date";
-            // 
-            // custodyStartDT
-            // 
-            this.custodyStartDT.Location = new System.Drawing.Point(153, 24);
-            this.custodyStartDT.Name = "custodyStartDT";
-            this.custodyStartDT.Size = new System.Drawing.Size(200, 20);
-            this.custodyStartDT.TabIndex = 1;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 30);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(110, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Custody Starting Date";
             // 
             // groupBox2
             // 
@@ -186,6 +192,8 @@
             // 
             // Identifying
             // 
+            this.Identifying.Controls.Add(this.ageTB);
+            this.Identifying.Controls.Add(this.label10);
             this.Identifying.Controls.Add(this.weightTB);
             this.Identifying.Controls.Add(this.label7);
             this.Identifying.Controls.Add(this.raceTB);
@@ -258,10 +266,11 @@
             // 
             // surnameTB
             // 
+            this.surnameTB.AcceptsTab = true;
             this.surnameTB.Location = new System.Drawing.Point(88, 45);
             this.surnameTB.Name = "surnameTB";
             this.surnameTB.Size = new System.Drawing.Size(214, 20);
-            this.surnameTB.TabIndex = 5;
+            this.surnameTB.TabIndex = 2;
             // 
             // genderCB
             // 
@@ -318,6 +327,26 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Height";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(585, 103);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(26, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Age";
+            // 
+            // ageTB
+            // 
+            this.ageTB.Location = new System.Drawing.Point(626, 100);
+            this.ageTB.Name = "ageTB";
+            this.ageTB.Size = new System.Drawing.Size(45, 20);
+            this.ageTB.TabIndex = 17;
+            // 
             // RegisterCriminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,7 +356,9 @@
             this.Size = new System.Drawing.Size(704, 459);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.photoRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoFront)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.Identifying.ResumeLayout(false);
@@ -348,11 +379,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox surnameTB;
         private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DateTimePicker custodyEndDT;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker custodyStartDT;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox stateTB;
@@ -365,5 +391,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox hairColorTB;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox photoFront;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.PictureBox photoRight;
+        private System.Windows.Forms.PictureBox photoLeft;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox ageTB;
+        private System.Windows.Forms.Label label10;
     }
 }

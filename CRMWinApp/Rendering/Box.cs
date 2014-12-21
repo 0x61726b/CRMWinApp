@@ -116,7 +116,13 @@ namespace CRMWinApp.Rendering
 
         private DeviceContext context;
         private ArkenConstantBuffer cbPerFrame;
+        private Models.Cell c;
 
+        public Models.Cell Cell
+        {
+            get { return c; }
+            set { c = value; }
+        }
 
 
         public Box(DeviceContext con, int w, int h)
@@ -201,7 +207,7 @@ namespace CRMWinApp.Rendering
             context.UnmapSubresource(pVertexBuffer, 0);
             ds.Dispose();
         }
-        public void Render()
+        public void Render(bool show)
         {
             //set transformation matrix
             float ratio = (float)ClientWidth / (float)ClientHeight;
@@ -228,7 +234,13 @@ namespace CRMWinApp.Rendering
             context.UpdateSubresource(ref cbPerFrame, cBuffer);
             context.VertexShader.SetConstantBuffer(0, cBuffer);
 
-            context.DrawIndexed(6, 0, 0);
+            if( show )
+                context.DrawIndexed(6, 0, 0);
+        }
+
+        public bool CheckForCollision(int mx,int my,int x,int y,int w,int h)
+        {
+            return (mx > x && mx <= x + w && my > y && my <= y + h);
         }
     }
 }

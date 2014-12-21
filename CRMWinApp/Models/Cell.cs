@@ -14,9 +14,12 @@ namespace CRMWinApp.Models
 
         public bool Status { get; set; }
 
-        public Criminal Criminal { get;set; }
+        public virtual Criminal Criminal { get;set; }
 
         public int X { get;set; }
         public int Y { get;set; }
+
+        public int Width { get; set; }
+        public int Height { get; set; }
     }
 }

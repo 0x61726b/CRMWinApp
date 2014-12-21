@@ -26,6 +26,7 @@
             this.Name = "RenderUC";
             this.Size = new System.Drawing.Size(671, 490);
             this.Load += new System.EventHandler(this.RenderUC_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RenderUC_KeyPress);
             this.ResumeLayout(false);
 
         }

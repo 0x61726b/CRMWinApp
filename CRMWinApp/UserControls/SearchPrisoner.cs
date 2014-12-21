@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRMWinApp.Models;
-
+using CRMWinApp.Globals;
 
 namespace CRMWinApp.UserControls
 {
+    
     public partial class SearchPrisoner : UserControl,IUserPermissionDisable
     {
         CRMDataModel context = new CRMDataModel();
@@ -94,24 +95,71 @@ namespace CRMWinApp.UserControls
                 if (!oneononeCB.Checked)
                 {
                     var result = context.Criminals.Where(
-                        x => x.Name == newCriminal.Name ||
-                                                 x.Surname == newCriminal.Surname ||
+                        x => x.Name.Contains(newCriminal.Name) ||
+                                                 x.Surname.Contains(newCriminal.Surname) ||
                                                  x.Height == newCriminal.Height ||
                                                  x.Weight == newCriminal.Weight ||
-                                                 x.Gender == newCriminal.Gender ||
-                                                 x.HairColor == newCriminal.HairColor ||
-                                                 x.Race == newCriminal.Race ||
-                                                 x.Country == newCriminal.Country ||
-                                                 x.State == newCriminal.State
+                                                 x.Gender.Contains(newCriminal.Gender) ||
+                                                 x.HairColor.Contains(newCriminal.HairColor) ||
+                                                 x.Race.Contains(newCriminal.Race) ||
+                                                 x.Country.Contains(newCriminal.Country) ||
+                                                 x.State.Contains(newCriminal.State)
                                             );
 
                     criminalList = result.ToList();
-                    dataGridView1.DataSource = criminalList;
+                    List<CriminalViewModel> cvmList = new List<CriminalViewModel>();
+                    for (int i = 0; i < criminalList.Count; ++i  )
+                    {
+                        CriminalViewModel cvm = new CriminalViewModel();
+                        Criminal c = criminalList[i];
+                        cvm.Name = c.Name;
+                        cvm.Surname = c.Surname;
+                        cvm.Height = c.Height;
+                        cvm.Weight = c.Weight;
+                        cvm.Gender = c.Gender;
+                        cvm.HairColor = c.HairColor;
+                        cvm.EyeColor = c.EyeColor;
+                        cvm.Race = c.Race;
+                        cvm.Country = c.Country;
+                        cvm.State = c.State;
+                        cvmList.Add(cvm);
+                    }
+                        dataGridView1.DataSource = cvmList;
 
                 }
                 else
                 {
-                    //TO FUCKING DO : ADD INTENSIVE SEARCH 
+                    var result = context.Criminals.Where(
+                       x => x.Name == newCriminal.Name ||
+                                                x.Surname == newCriminal.Surname ||
+                                                x.Height == newCriminal.Height ||
+                                                x.Weight == newCriminal.Weight ||
+                                                x.Gender == newCriminal.Gender ||
+                                                x.HairColor == newCriminal.HairColor ||
+                                                x.Race == newCriminal.Race ||
+                                                x.Country == newCriminal.Country ||
+                                                x.State == newCriminal.State
+                                           );
+
+                    criminalList = result.ToList();
+                    List<CriminalViewModel> cvmList = new List<CriminalViewModel>();
+                    for (int i = 0; i < criminalList.Count; ++i)
+                    {
+                        CriminalViewModel cvm = new CriminalViewModel();
+                        Criminal c = criminalList[i];
+                        cvm.Name = c.Name;
+                        cvm.Surname = c.Surname;
+                        cvm.Height = c.Height;
+                        cvm.Weight = c.Weight;
+                        cvm.Gender = c.Gender;
+                        cvm.HairColor = c.HairColor;
+                        cvm.EyeColor = c.EyeColor;
+                        cvm.Race = c.Race;
+                        cvm.Country = c.Country;
+                        cvm.State = c.State;
+                        cvmList.Add(cvm);
+                    }
+                    dataGridView1.DataSource = cvmList;
 
                 }
 
@@ -142,7 +190,7 @@ namespace CRMWinApp.UserControls
             if (selectedCriminal != null)
             {
                 PassCriminal(selectedCriminal);
-                PassControl( this );
+                if( PassControl != null )PassControl( this );
             }
         }
 
@@ -150,7 +198,8 @@ namespace CRMWinApp.UserControls
         {
             try
             {
-                var r = context.Arrests.Where(x => x.Type.Name == crimeTypeCB.SelectedText).SingleOrDefault();
+                var type = context.CrimeTypes.Where( x => x.Name == crimeTypeCB.SelectedItem.ToString() ).FirstOrDefault();
+                var r = context.Arrests.Where(x => x.Type.Id == type.Id ).ToList();
 
 
 
@@ -163,7 +212,29 @@ namespace CRMWinApp.UserControls
                 else
                 {
                     criminalList.Clear();
-                    criminalList.Add(r.Criminal);
+                    for(int i=0; i < r.Count; ++i )
+                        criminalList.Add(r[i].Criminal);
+                    List<CriminalViewModel> cvmList = new List<CriminalViewModel>();
+                    for (int i = 0; i < criminalList.Count; ++i)
+                    {
+                        CriminalViewModel cvm = new CriminalViewModel();
+                        Criminal c = criminalList[i];
+                        cvm.Name = c.Name;
+                        cvm.Surname = c.Surname;
+                        cvm.Height = c.Height;
+                        cvm.Weight = c.Weight;
+                        cvm.Gender = c.Gender;
+                        cvm.HairColor = c.HairColor;
+                        cvm.EyeColor = c.EyeColor;
+                        cvm.Race = c.Race;
+                        cvm.Country = c.Country;
+                        cvm.State = c.State;
+                        cvmList.Add(cvm);
+                    }
+                    dataGridView1.DataSource = cvmList;
+                    
+                    DataView dv = new DataView();
+                    
                 }
             }
             catch (Exception ex)
