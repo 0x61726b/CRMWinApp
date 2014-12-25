@@ -280,6 +280,14 @@
     <Compile Include="Migrations\201412211404365_CRMDataModel14.Designer.cs">
       <DependentUpon>201412211404365_CRMDataModel14.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412242026179_CRMDataModel15.cs" />
+    <Compile Include="Migrations\201412242026179_CRMDataModel15.Designer.cs">
+      <DependentUpon>201412242026179_CRMDataModel15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412242117296_CRMDataModel16.cs" />
+    <Compile Include="Migrations\201412242117296_CRMDataModel16.Designer.cs">
+      <DependentUpon>201412242117296_CRMDataModel16.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -295,7 +303,7 @@
     <Compile Include="Models\Meeting.cs" />
     <Compile Include="Models\Outsider.cs" />
     <Compile Include="Models\Permission.cs" />
-    <Compile Include="Models\Sentence.cs" />
+    <Compile Include="Models\Punishment.cs" />
     <Compile Include="Models\Transfer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
@@ -307,6 +315,12 @@
     </Compile>
     <Compile Include="UserControls\AddAttorney.Designer.cs">
       <DependentUpon>AddAttorney.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddCharge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddCharge.Designer.cs">
+      <DependentUpon>AddCharge.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ArrestUC.cs">
       <SubType>UserControl</SubType>
@@ -513,6 +527,12 @@
     <EmbeddedResource Include="Migrations\201412211404365_CRMDataModel14.resx">
       <DependentUpon>201412211404365_CRMDataModel14.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412242026179_CRMDataModel15.resx">
+      <DependentUpon>201412242026179_CRMDataModel15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412242117296_CRMDataModel16.resx">
+      <DependentUpon>201412242117296_CRMDataModel16.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -525,6 +545,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\AddAttorney.resx">
       <DependentUpon>AddAttorney.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AddCharge.resx">
+      <DependentUpon>AddCharge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ArrestUC.resx">
       <DependentUpon>ArrestUC.cs</DependentUpon>

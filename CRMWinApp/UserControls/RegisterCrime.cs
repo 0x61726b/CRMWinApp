@@ -13,7 +13,7 @@ using CRMWinApp.Models;
 
 namespace CRMWinApp.UserControls
 {
-    public partial class RegisterCrime : UserControl
+    public partial class RegisterCrime : UserControl, IUserPermissionDisable
     {
         private CRMDataModel context = new CRMDataModel();
         private Criminal selectedCriminal;
@@ -23,6 +23,8 @@ namespace CRMWinApp.UserControls
         public delegate void CrimeRegisteredDelegate();
         public CrimeRegisteredDelegate EventCrimeRegistered;
 
+        public delegate void ShowCrimesDelegate(Criminal c);
+        public ShowCrimesDelegate EventShowCrimes;
         public User User
         {
             get { return _user; }
@@ -33,7 +35,7 @@ namespace CRMWinApp.UserControls
                 User ux = context.Users.Where(u => u.Id == user.Id).FirstOrDefault();
 
                 _user = ux;
-            
+
             }
         }
 
@@ -57,7 +59,7 @@ namespace CRMWinApp.UserControls
                 surnameTB.Text = c.Surname;
                 criminalPictureBox.Image = ByteToImage(c.PictureFront);
                 selectedCriminal = c;
-
+                goCrimesButton.Enabled = true;
             }
         }
 
@@ -122,6 +124,19 @@ namespace CRMWinApp.UserControls
             }
             else
             {
+                if (startPunishDate.Value >= endPunishDate.Value)
+                {
+                    MessageBox.Show("Huehuehueheu");
+                    return;
+                }
+                if (string.IsNullOrEmpty(locationTB.Text) ||
+                    string.IsNullOrEmpty(noteTB.Text)
+                    )
+                {
+                    MessageBox.Show("All fields should not be empty.");
+                    return;
+
+                }
                 Arrest newArrest = new Arrest();
                 Criminal cr = context.Criminals.Where(x => x.Id == selectedCriminal.Id).FirstOrDefault();
 
@@ -152,22 +167,43 @@ namespace CRMWinApp.UserControls
 
                 newCite.Type = citeType;
 
-                Sentence newSentence = new Sentence();
-                newSentence.Note = noteTB.Text;
-                newSentence.Year = Int32.Parse(sentenceTB.Text);
+                var exc = context.CiteTypes.Where(x => x.Name == citeType.Name).FirstOrDefault();
+
+                if (exc != null)
+                    newCite.Type = exc;
+                var exPunishment = context.Punishments.Where(x => x.Criminal.Id == cr.Id).ToList();
+
+                if (exPunishment.Count > 0)
+                {
+                    for (int i = 0; i < exPunishment.Count; ++i)
+                    {
+                        //Compare the dates
+
+                        if (!(startPunishDate.Value > exPunishment[i].Start && startPunishDate.Value > exPunishment[i].End))
+                        {
+                            MessageBox.Show("There is an ongoing crime record for this range of dates.");
+                            return;
+                        }
+                    }
+                }
+                Punishment p = new Punishment();
+                p.Criminal = cr;
+                p.Start = startPunishDate.Value;
+                p.End = endPunishDate.Value;
+
+
 
                 Charge newCharge = new Charge();
                 newCharge.Attorney = att;
                 newCharge.Cite = newCite;
                 newCharge.Date = crimeDate.Value;
-                newCharge.Sentence = newSentence;
                 newCharge.Against = cr;
 
                 try
                 {
-                    
-                    
-                    
+
+
+                    context.Punishments.Add(p);
                     context.Arrests.Add(newArrest);
                     context.Charges.Add(newCharge);
                     context.SaveChanges();
@@ -180,6 +216,23 @@ namespace CRMWinApp.UserControls
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void goCrimesButton_Click(object sender, EventArgs e)
+        {
+            EventShowCrimes(selectedCriminal);
+        }
+
+        public void Disable(List<Permission> permissions)
+        {
+            foreach (Permission p in permissions)
+            {
+                if (p.Name == "CAN_REGISTER_CRIME_CRIMINAL")
+                {
+                    groupBox1.Enabled = true;
+                }
+
             }
         }
     }

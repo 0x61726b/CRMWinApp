@@ -53,8 +53,7 @@ namespace CRMWinApp
 
         public virtual DbSet<Models.Attorney> Attorneys { get; set; }
 
-        public virtual DbSet<Models.Sentence> Sentences { get; set; }
-
+        public virtual DbSet<Models.Punishment> Punishments { get; set; }
 
         public override int SaveChanges()
         {

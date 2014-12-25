@@ -61,39 +61,39 @@ namespace CRMWinApp.Forms
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
-            //string userName = "arkenthera";
-            //string pass = "1234567";
+            string userName = "arkenthera";
+            string pass = "1234567";
 
-            //if (userName == String.Empty || pass == String.Empty)
-            //{
-            //    MessageBox.Show("Please enter your user name or password.");
-            //}
-            //else
-            //{
-            //    var q = context.Users.SingleOrDefault(linq => linq.Name == userName && linq.Pass == pass);
-            //    if (q != null)
-            //    {
-            //        MainForm mf = new MainForm();
+            if (userName == String.Empty || pass == String.Empty)
+            {
+                MessageBox.Show("Please enter your user name or password.");
+            }
+            else
+            {
+                var q = context.Users.SingleOrDefault(linq => linq.Name == userName && linq.Pass == pass);
+                if (q != null)
+                {
+                    MainForm mf = new MainForm();
 
-            //        mf.SetUser((Models.User)q);
+                    mf.SetUser((Models.User)q);
 
-            //        mf.Show();
+                    mf.Show();
 
-            //        this.Hide();
+                    this.Hide();
 
-            //        RenderLoop.RenderCallback callback = new RenderLoop.RenderCallback(mf.Render);
-            //        RenderLoop.Run(mf, () =>
-            //            {
-            //                mf.Render();
-            //            }
-            //        );
+                    RenderLoop.RenderCallback callback = new RenderLoop.RenderCallback(mf.Render);
+                    RenderLoop.Run(mf, () =>
+                        {
+                            mf.Render();
+                        }
+                    );
 
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("User name or password you entered is wrong.Please try again.");
-            //    }
-            //}
+                }
+                else
+                {
+                    MessageBox.Show("User name or password you entered is wrong.Please try again.");
+                }
+            }
 
         }
     }

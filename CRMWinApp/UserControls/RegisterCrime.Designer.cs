@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.submitButton = new System.Windows.Forms.Button();
+            this.goCrimesButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.sentenceTB = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.endPunishDate = new System.Windows.Forms.DateTimePicker();
+            this.startPunishDate = new System.Windows.Forms.DateTimePicker();
+            this.submitButton = new System.Windows.Forms.Button();
             this.noteTB = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.attorneyCB = new System.Windows.Forms.ComboBox();
@@ -58,10 +60,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.submitButton);
+            this.groupBox1.Controls.Add(this.goCrimesButton);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.sentenceTB);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.endPunishDate);
+            this.groupBox1.Controls.Add(this.startPunishDate);
+            this.groupBox1.Controls.Add(this.submitButton);
             this.groupBox1.Controls.Add(this.noteTB);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.attorneyCB);
@@ -82,6 +86,7 @@
             this.groupBox1.Controls.Add(this.criminalPictureBox);
             this.groupBox1.Controls.Add(this.findPrisoner);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(910, 603);
@@ -90,9 +95,52 @@
             this.groupBox1.Text = "Register Crime";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // goCrimesButton
+            // 
+            this.goCrimesButton.Enabled = false;
+            this.goCrimesButton.Location = new System.Drawing.Point(110, 264);
+            this.goCrimesButton.Name = "goCrimesButton";
+            this.goCrimesButton.Size = new System.Drawing.Size(88, 23);
+            this.goCrimesButton.TabIndex = 28;
+            this.goCrimesButton.Text = "Show Crimes";
+            this.goCrimesButton.UseVisualStyleBackColor = true;
+            this.goCrimesButton.Click += new System.EventHandler(this.goCrimesButton_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(257, 385);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(110, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Punishment End Date";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(257, 347);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 13);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Punishment Start Date";
+            // 
+            // endPunishDate
+            // 
+            this.endPunishDate.Location = new System.Drawing.Point(398, 385);
+            this.endPunishDate.Name = "endPunishDate";
+            this.endPunishDate.Size = new System.Drawing.Size(200, 20);
+            this.endPunishDate.TabIndex = 25;
+            // 
+            // startPunishDate
+            // 
+            this.startPunishDate.Location = new System.Drawing.Point(398, 341);
+            this.startPunishDate.Name = "startPunishDate";
+            this.startPunishDate.Size = new System.Drawing.Size(200, 20);
+            this.startPunishDate.TabIndex = 24;
+            // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(424, 450);
+            this.submitButton.Location = new System.Drawing.Point(640, 356);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(126, 23);
             this.submitButton.TabIndex = 23;
@@ -100,34 +148,9 @@
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(505, 397);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 13);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "years";
-            // 
-            // sentenceTB
-            // 
-            this.sentenceTB.Location = new System.Drawing.Point(398, 394);
-            this.sentenceTB.Name = "sentenceTB";
-            this.sentenceTB.Size = new System.Drawing.Size(101, 20);
-            this.sentenceTB.TabIndex = 21;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(290, 401);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Sentence";
-            // 
             // noteTB
             // 
-            this.noteTB.Location = new System.Drawing.Point(398, 248);
+            this.noteTB.Location = new System.Drawing.Point(398, 222);
             this.noteTB.Name = "noteTB";
             this.noteTB.Size = new System.Drawing.Size(200, 113);
             this.noteTB.TabIndex = 19;
@@ -136,7 +159,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(290, 251);
+            this.label9.Location = new System.Drawing.Point(290, 225);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 18;
@@ -285,7 +308,7 @@
             // 
             this.findPrisoner.Location = new System.Drawing.Point(24, 264);
             this.findPrisoner.Name = "findPrisoner";
-            this.findPrisoner.Size = new System.Drawing.Size(126, 23);
+            this.findPrisoner.Size = new System.Drawing.Size(80, 23);
             this.findPrisoner.TabIndex = 0;
             this.findPrisoner.Text = "Find Prisoner";
             this.findPrisoner.UseVisualStyleBackColor = true;
@@ -328,9 +351,11 @@
         private System.Windows.Forms.ComboBox attorneyCB;
         private System.Windows.Forms.RichTextBox noteTB;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox sentenceTB;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker endPunishDate;
+        private System.Windows.Forms.DateTimePicker startPunishDate;
+        private System.Windows.Forms.Button goCrimesButton;
     }
 }

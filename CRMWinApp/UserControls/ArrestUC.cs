@@ -18,6 +18,10 @@ namespace CRMWinApp.UserControls
         private Charge selectedCharge;
         public delegate void ControlUpdateDel(UserControl uc);
         public ControlUpdateDel PassControl;
+
+        public delegate void ChargeAddDelegate(Criminal c);
+        public ChargeAddDelegate EventAddCharge;
+
         CRMDataModel context = new CRMDataModel();
         public ArrestUC()
         {
@@ -270,8 +274,10 @@ namespace CRMWinApp.UserControls
                 for (int l = 0; l < attorneys.Count; ++l)
                 {
                     attorneyCB.Items.Add(attorneys[l].Name);
+                
                 }
-                attorneyCB.SelectedText = c.Attorney.Name;
+                if( c.Attorney != null )
+                    attorneyCB.SelectedText = c.Attorney.Name;
             }
         }
 
@@ -318,6 +324,21 @@ namespace CRMWinApp.UserControls
             selectedCharge.Attorney = a;
             attorneyCB.SelectedItem = a.Name;
             attorneyCB.SelectedText = a.Name;
+        }
+
+        private void punishmentButton_Click(object sender, EventArgs e)
+        {
+            var xp = context.Punishments.Where(p => p.Criminal.Id == criminal.Id).FirstOrDefault();
+
+            if (xp != null)
+                MessageBox.Show("Criminal is in jail from " + xp.Start.ToShortDateString() + " to " + xp.End.ToShortDateString());
+            else
+                MessageBox.Show("No record.");
+        }
+
+        private void addNewChargeBtn_Click(object sender, EventArgs e)
+        {
+            EventAddCharge(criminal);
         }
     }
 }

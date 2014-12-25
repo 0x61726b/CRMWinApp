@@ -86,8 +86,11 @@ namespace CRMWinApp
                 userPermissionList.Add(p.Permission);
             }
 
+            DisableTransfering();
+
             ClearPanel();
             renderUC = new RenderUC();
+            renderUC.Disable(userPermissionList);
             renderUC.Width = MidPanel.Width;
             renderUC.Height = MidPanel.Height;
             renderUC.ClientWidth = MidPanel.Width;
@@ -152,10 +155,24 @@ namespace CRMWinApp
         private void OnCriminalListClicked(Models.Criminal c)
         {
             ClearPanel();
+
+            bool cx = false;
+
+            foreach (var p in userPermissionList)
+            {
+                if (p.Name == "CAN_ACCESS_FULL_INFO_CRIMINALS")
+                    cx = true;
+            }
+
+            if (cx == false)
+            {
+                MessageBox.Show("You dont have the permission to view this module.");
+                return;
+            }
             ArrestUC ucf = new ArrestUC();
             ucf.Dock = DockStyle.Fill;
             ucf.SetCriminal(c);
-
+            ucf.EventAddCharge = new ArrestUC.ChargeAddDelegate(EventAddChargeClicked);
             //TO FUCKING DO -> MAKE IT SO THAT THIS RETURNS ONLY THE LAST ARREST
             var arrestData = context.Arrests.Where(x => x.Criminal.Id == c.Id);
 
@@ -171,6 +188,19 @@ namespace CRMWinApp
 
             PostClearPanel();
         }
+        private void EventAddChargeClicked(Models.Criminal cx)
+        {
+            ClearPanel();
+            AddCharge ac = new AddCharge();
+            ac.Dock = DockStyle.Fill;
+            ac.SetCriminal(cx);
+            ac.EventAddClicked = new AddCharge.AddClickedDelegate(AddChargeSubmit);
+            MidPanel.Controls.Add(ac);
+        }
+        private void AddChargeSubmit(Criminal cx)
+        {
+
+        }
         private void UserGreetingLbl_Click(object sender, EventArgs e)
         {
 
@@ -178,7 +208,7 @@ namespace CRMWinApp
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.ExitThread();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -196,6 +226,7 @@ namespace CRMWinApp
 
 
             RegisterCriminal rc = new RegisterCriminal();
+            rc.Disable(userPermissionList);
             rc.Dock = DockStyle.Fill;
             rc.passControl = new UserControls.RegisterCriminal.PassUser(OnNewCriminalRegistered);
             rc.PassControl = new UserControls.RegisterCriminal.ControlUpdateDel(UpdateLatestControls);
@@ -390,7 +421,17 @@ namespace CRMWinApp
             Image returnImage = Image.FromStream(ms);
             return returnImage;
         }
-
+        public void DisableTransfering()
+        {
+            panel3.Enabled = false;
+            foreach (var p in userPermissionList)
+            {
+                if (p.Name == "CAN_TRANSFER")
+                {
+                    panel3.Enabled = true;
+                }
+            }
+        }
         private void criminalListLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             Criminal selected = criminalListLB.SelectedItem as Criminal;
@@ -415,29 +456,36 @@ namespace CRMWinApp
                 if (MessageBox.Show("Are you sure you want to transfer " + selectedCell.Criminal.Name + " to " + selectedCell.Number + " ?", "Transferring criminal", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     var cell = context.Cells.Where(x => x.Id == selectedCell.Id).FirstOrDefault();
-                    selectedCell.Status = true;
+                    var sc = context.Cells.Where(x => x.Id == selectedCell.Id).FirstOrDefault();
+                    var cr = context.Criminals.Where(x => x.Id == selectedCell.Criminal.Id).FirstOrDefault();
+                    sc.Status = true;
 
-                    cell.Criminal = selectedCell.Criminal;
+                    context.Entry(cell).Reload();
+                    context.Entry(cr).Reload();
+                    context.Entry(sc).Reload();
 
-                    var previousCell = context.Cells.Where(x => x.Criminal.Id == selectedCell.Criminal.Id).FirstOrDefault();
-                    var newCell = previousCell;
+                    Cell previousCell = null, newCell = null;
 
 
+                    previousCell = context.Cells.Where(x => x.Criminal.Id == cr.Id).FirstOrDefault();
+                    newCell = previousCell;
+
+                    sc.Criminal = context.Criminals.Where(x => x.Id == cr.Id).FirstOrDefault();
                     try
                     {
-                        context.Entry(cell).CurrentValues.SetValues(selectedCell);
-                        
+                        context.Entry(cell).CurrentValues.SetValues(sc);
+
                         if (previousCell != null)
                         {
                             newCell.Criminal = null;
                             newCell.Status = false;
-                            context.Entry(previousCell).CurrentValues.SetValues(newCell);
+                            context.Entry(context.Cells.Where(x => x.Id == previousCell.Id)).CurrentValues.SetValues(newCell);
                         }
 
                         context.SaveChanges();
                         renderUC.UpdatePictures();
                     }
-                    catch( Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
@@ -464,15 +512,40 @@ namespace CRMWinApp
         {
             ClearPanel();
             RegisterCrime rc = new RegisterCrime();
+            rc.Disable(userPermissionList);
             rc.User = cLoggedUser;
             rc.Dock = DockStyle.Fill;
             rc.EventCrimeRegistered = new RegisterCrime.CrimeRegisteredDelegate(EventCrimeRegistered);
+            rc.EventShowCrimes = new RegisterCrime.ShowCrimesDelegate(EventShowCrimes);
             MidPanel.Controls.Add(rc);
         }
         private void EventCrimeRegistered()
         {
             UpdateStatistics();
         }
+        private void EventShowCrimes(Criminal c)
+        {
+            ClearPanel();
+            ArrestUC ucf = new ArrestUC();
+            ucf.Dock = DockStyle.Fill;
+            ucf.SetCriminal(c);
+
+            //TO FUCKING DO -> MAKE IT SO THAT THIS RETURNS ONLY THE LAST ARREST
+            var arrestData = context.Arrests.Where(x => x.Criminal.Id == c.Id);
+
+
+
+            if (arrestData.Count() != 0)
+            {
+                List<Models.Arrest> a = arrestData.ToList();
+                ucf.SetArrestData(a);
+            }
+
+            MidPanel.Controls.Add(ucf);
+
+            PostClearPanel();
+        }
+
 
     }
 }

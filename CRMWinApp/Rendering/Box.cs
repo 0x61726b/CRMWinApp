@@ -137,10 +137,10 @@ namespace CRMWinApp.Rendering
 
         public void ConstructGeometry(Device AppDevice)
         {
-            var vertexShaderByteCode = ShaderBytecode.CompileFromFile("C:\\Users\\alperen\\Documents\\Visual Studio 2013\\Projects\\CRMWinAppGitRelease\\CRMWinApp\\Shaders\\VertexColorShader.hlsl", "TCSV", "vs_4_0", ShaderFlags.None, EffectFlags.None);
+            var vertexShaderByteCode = ShaderBytecode.CompileFromFile("..\\..\\Shaders\\VertexColorShader.hlsl", "TCSV", "vs_4_0", ShaderFlags.None, EffectFlags.None);
             var vertexShader = new VertexShader(AppDevice, vertexShaderByteCode);
 
-            var pixelShaderByteCode = ShaderBytecode.CompileFromFile("C:\\Users\\alperen\\Documents\\Visual Studio 2013\\Projects\\CRMWinAppGitRelease\\CRMWinApp\\Shaders\\VertexColorShader.hlsl", "TCSP", "ps_4_0", ShaderFlags.None, EffectFlags.None);
+            var pixelShaderByteCode = ShaderBytecode.CompileFromFile("..\\..\\Shaders\\VertexColorShader.hlsl", "TCSP", "ps_4_0", ShaderFlags.None, EffectFlags.None);
             var pixelShader = new PixelShader(AppDevice, pixelShaderByteCode);
 
             pVertexShader = vertexShader;

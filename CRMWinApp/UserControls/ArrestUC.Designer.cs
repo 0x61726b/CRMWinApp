@@ -33,6 +33,7 @@
             this.ArrestInfoTab = new System.Windows.Forms.TabPage();
             this.arrestInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.arrestRightPanel = new System.Windows.Forms.Panel();
+            this.punishmentButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.surnameLBL = new System.Windows.Forms.Label();
             this.nameLBL = new System.Windows.Forms.Label();
@@ -82,6 +83,7 @@
             this.meetingItem1 = new CRMWinApp.UserControls.MeetingItem();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.addNewChargeBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.ArrestInfoTab.SuspendLayout();
             this.arrestInfoGroupBox.SuspendLayout();
@@ -148,6 +150,7 @@
             // 
             // arrestRightPanel
             // 
+            this.arrestRightPanel.Controls.Add(this.punishmentButton);
             this.arrestRightPanel.Controls.Add(this.updateButton);
             this.arrestRightPanel.Controls.Add(this.surnameLBL);
             this.arrestRightPanel.Controls.Add(this.nameLBL);
@@ -168,6 +171,16 @@
             this.arrestRightPanel.Name = "arrestRightPanel";
             this.arrestRightPanel.Size = new System.Drawing.Size(574, 589);
             this.arrestRightPanel.TabIndex = 11;
+            // 
+            // punishmentButton
+            // 
+            this.punishmentButton.Location = new System.Drawing.Point(35, 3);
+            this.punishmentButton.Name = "punishmentButton";
+            this.punishmentButton.Size = new System.Drawing.Size(180, 23);
+            this.punishmentButton.TabIndex = 15;
+            this.punishmentButton.Text = "Show Punishment Data";
+            this.punishmentButton.UseVisualStyleBackColor = true;
+            this.punishmentButton.Click += new System.EventHandler(this.punishmentButton_Click);
             // 
             // updateButton
             // 
@@ -373,6 +386,7 @@
             // 
             // rightChargePanel
             // 
+            this.rightChargePanel.Controls.Add(this.addNewChargeBtn);
             this.rightChargePanel.Controls.Add(this.findAtt);
             this.rightChargePanel.Controls.Add(this.button2);
             this.rightChargePanel.Controls.Add(this.citeTypeCB);
@@ -610,6 +624,16 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Select Date";
             // 
+            // addNewChargeBtn
+            // 
+            this.addNewChargeBtn.Location = new System.Drawing.Point(339, 26);
+            this.addNewChargeBtn.Name = "addNewChargeBtn";
+            this.addNewChargeBtn.Size = new System.Drawing.Size(75, 23);
+            this.addNewChargeBtn.TabIndex = 12;
+            this.addNewChargeBtn.Text = "Add";
+            this.addNewChargeBtn.UseVisualStyleBackColor = true;
+            this.addNewChargeBtn.Click += new System.EventHandler(this.addNewChargeBtn_Click);
+            // 
             // ArrestUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -696,5 +720,7 @@
         private System.Windows.Forms.DateTimePicker chargeDate;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button findAtt;
+        private System.Windows.Forms.Button punishmentButton;
+        private System.Windows.Forms.Button addNewChargeBtn;
     }
 }

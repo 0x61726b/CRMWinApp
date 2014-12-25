@@ -38,14 +38,12 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TopFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.chargeCountLbl = new System.Windows.Forms.Label();
             this.arrestCountLbl = new System.Windows.Forms.Label();
             this.criminalCountLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
             this.UserInfoPanel = new System.Windows.Forms.Panel();
-            this.exitButton = new System.Windows.Forms.Button();
             this.MidFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.adminPanel = new System.Windows.Forms.GroupBox();
@@ -83,7 +81,6 @@
             this.menuStrip1.SuspendLayout();
             this.TopFlowLayoutPanel.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.UserInfoPanel.SuspendLayout();
             this.MidFlowLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.adminPanel.SuspendLayout();
@@ -142,7 +139,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.chargeCountLbl);
             this.panel1.Controls.Add(this.arrestCountLbl);
             this.panel1.Controls.Add(this.criminalCountLbl);
@@ -153,16 +149,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1005, 89);
             this.panel1.TabIndex = 0;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(834, 60);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Refresh";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // chargeCountLbl
             // 
@@ -214,22 +200,11 @@
             // UserInfoPanel
             // 
             this.UserInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UserInfoPanel.Controls.Add(this.exitButton);
             this.UserInfoPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UserInfoPanel.Location = new System.Drawing.Point(1014, 3);
             this.UserInfoPanel.Name = "UserInfoPanel";
             this.UserInfoPanel.Size = new System.Drawing.Size(200, 89);
             this.UserInfoPanel.TabIndex = 1;
-            // 
-            // exitButton
-            // 
-            this.exitButton.Location = new System.Drawing.Point(120, 60);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
-            this.exitButton.TabIndex = 1;
-            this.exitButton.Text = "Logout";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // MidFlowLayoutPanel
             // 
@@ -601,7 +576,6 @@
             this.TopFlowLayoutPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.UserInfoPanel.ResumeLayout(false);
             this.MidFlowLayoutPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.adminPanel.ResumeLayout(false);
@@ -633,7 +607,6 @@
         private System.Windows.Forms.Panel MidPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -665,7 +638,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox searchSurnameTxt;
         private System.Windows.Forms.Button transferBtn;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button addAttorney;
         private System.Windows.Forms.Button registerCrime;
 

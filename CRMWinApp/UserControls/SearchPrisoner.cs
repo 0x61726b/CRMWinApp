@@ -12,8 +12,8 @@ using CRMWinApp.Globals;
 
 namespace CRMWinApp.UserControls
 {
-    
-    public partial class SearchPrisoner : UserControl,IUserPermissionDisable
+
+    public partial class SearchPrisoner : UserControl, IUserPermissionDisable
     {
         CRMDataModel context = new CRMDataModel();
         List<Criminal> criminalList = new List<Criminal>();
@@ -21,7 +21,7 @@ namespace CRMWinApp.UserControls
         public delegate void PassCriminalDel(Models.Criminal criminal);
         public PassCriminalDel PassCriminal;
 
-        public delegate void ControlUpdateDel( UserControl uc);
+        public delegate void ControlUpdateDel(UserControl uc);
         public ControlUpdateDel PassControl;
 
 
@@ -62,7 +62,7 @@ namespace CRMWinApp.UserControls
             else
                 newCriminal.Weight = Int32.Parse(weightTB.Text);
 
-            if( genderCB.SelectedItem == null )
+            if (genderCB.SelectedItem == null)
                 newCriminal.Gender = String.Empty;
             else
                 newCriminal.Gender = genderCB.SelectedItem.ToString();
@@ -94,21 +94,40 @@ namespace CRMWinApp.UserControls
             {
                 if (!oneononeCB.Checked)
                 {
-                    var result = context.Criminals.Where(
-                        x => x.Name.Contains(newCriminal.Name) ||
-                                                 x.Surname.Contains(newCriminal.Surname) ||
-                                                 x.Height == newCriminal.Height ||
-                                                 x.Weight == newCriminal.Weight ||
-                                                 x.Gender.Contains(newCriminal.Gender) ||
-                                                 x.HairColor.Contains(newCriminal.HairColor) ||
-                                                 x.Race.Contains(newCriminal.Race) ||
-                                                 x.Country.Contains(newCriminal.Country) ||
-                                                 x.State.Contains(newCriminal.State)
-                                            );
+                    IQueryable<Criminal> result = null;
+
+                    if (!startsWithCB.Checked)
+                    {
+                        result = context.Criminals.Where(
+                                              x => (newCriminal.Name != String.Empty && x.Name.Contains(newCriminal.Name)) ||
+                                            (newCriminal.Surname != String.Empty && x.Surname.Contains(newCriminal.Surname)) ||
+                                            (newCriminal.Height != 0 && x.Height == newCriminal.Height) ||
+                                            (newCriminal.Weight != 0 && x.Weight == newCriminal.Weight) ||
+                                            (newCriminal.Gender != String.Empty && x.Gender.Contains(newCriminal.Gender)) ||
+                                            (newCriminal.HairColor != String.Empty && x.HairColor.Contains(newCriminal.HairColor)) ||
+                                            (newCriminal.Race != String.Empty && x.Race.Contains(newCriminal.Race)) ||
+                                            (newCriminal.Country != String.Empty && x.Country.Contains(newCriminal.Country)) ||
+                                            (newCriminal.State != String.Empty && x.State.Contains(newCriminal.State))
+                                       );
+                    }
+                    else
+                    {
+                        result = context.Criminals.Where(
+                      x => (newCriminal.Name != String.Empty && x.Name.StartsWith(newCriminal.Name)) ||
+                    (newCriminal.Surname != String.Empty && x.Surname.StartsWith(newCriminal.Surname)) ||
+                    (newCriminal.Height != 0 && x.Height == newCriminal.Height) ||
+                    (newCriminal.Weight != 0 && x.Weight == newCriminal.Weight) ||
+                    (newCriminal.Gender != String.Empty && x.Gender.StartsWith(newCriminal.Gender)) ||
+                    (newCriminal.HairColor != String.Empty && x.HairColor.StartsWith(newCriminal.HairColor)) ||
+                    (newCriminal.Race != String.Empty && x.Race.StartsWith(newCriminal.Race)) ||
+                    (newCriminal.Country != String.Empty && x.Country.StartsWith(newCriminal.Country)) ||
+                    (newCriminal.State != String.Empty && x.State.StartsWith(newCriminal.State))
+               );
+                    }
 
                     criminalList = result.ToList();
                     List<CriminalViewModel> cvmList = new List<CriminalViewModel>();
-                    for (int i = 0; i < criminalList.Count; ++i  )
+                    for (int i = 0; i < criminalList.Count; ++i)
                     {
                         CriminalViewModel cvm = new CriminalViewModel();
                         Criminal c = criminalList[i];
@@ -124,7 +143,7 @@ namespace CRMWinApp.UserControls
                         cvm.State = c.State;
                         cvmList.Add(cvm);
                     }
-                        dataGridView1.DataSource = cvmList;
+                    dataGridView1.DataSource = cvmList;
 
                 }
                 else
@@ -190,7 +209,7 @@ namespace CRMWinApp.UserControls
             if (selectedCriminal != null)
             {
                 PassCriminal(selectedCriminal);
-                if( PassControl != null )PassControl( this );
+                if (PassControl != null) PassControl(this);
             }
         }
 
@@ -198,8 +217,8 @@ namespace CRMWinApp.UserControls
         {
             try
             {
-                var type = context.CrimeTypes.Where( x => x.Name == crimeTypeCB.SelectedItem.ToString() ).FirstOrDefault();
-                var r = context.Arrests.Where(x => x.Type.Id == type.Id ).ToList();
+                var type = context.CrimeTypes.Where(x => x.Name == crimeTypeCB.SelectedItem.ToString()).FirstOrDefault();
+                var r = context.Arrests.Where(x => x.Type.Id == type.Id).ToList();
 
 
 
@@ -212,7 +231,7 @@ namespace CRMWinApp.UserControls
                 else
                 {
                     criminalList.Clear();
-                    for(int i=0; i < r.Count; ++i )
+                    for (int i = 0; i < r.Count; ++i)
                         criminalList.Add(r[i].Criminal);
                     List<CriminalViewModel> cvmList = new List<CriminalViewModel>();
                     for (int i = 0; i < criminalList.Count; ++i)
@@ -232,9 +251,9 @@ namespace CRMWinApp.UserControls
                         cvmList.Add(cvm);
                     }
                     dataGridView1.DataSource = cvmList;
-                    
+
                     DataView dv = new DataView();
-                    
+
                 }
             }
             catch (Exception ex)
@@ -246,9 +265,9 @@ namespace CRMWinApp.UserControls
         public void Disable(List<Permission> permissions)
         {
             bool t = false;
-            foreach( Permission p in permissions )
+            foreach (Permission p in permissions)
             {
-                if( p.Name == "CAN_SEARCH_CRIMINAL_CRIME" )
+                if (p.Name == "CAN_SEARCH_CRIMINAL_CRIME")
                 {
                     t = true;
                 }

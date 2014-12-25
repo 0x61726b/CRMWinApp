@@ -58,6 +58,7 @@ namespace CRMWinApp.UserControls
             this.heightTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.startsWithCB = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -214,6 +215,7 @@ namespace CRMWinApp.UserControls
             // 
             // Identifying
             // 
+            this.Identifying.Controls.Add(this.startsWithCB);
             this.Identifying.Controls.Add(this.weightTB);
             this.Identifying.Controls.Add(this.label7);
             this.Identifying.Controls.Add(this.raceTB);
@@ -353,6 +355,16 @@ namespace CRMWinApp.UserControls
             this.label3.TabIndex = 6;
             this.label3.Text = "Height";
             // 
+            // startsWithCB
+            // 
+            this.startsWithCB.AutoSize = true;
+            this.startsWithCB.Location = new System.Drawing.Point(351, 21);
+            this.startsWithCB.Name = "startsWithCB";
+            this.startsWithCB.Size = new System.Drawing.Size(78, 17);
+            this.startsWithCB.TabIndex = 16;
+            this.startsWithCB.Text = "Starts With";
+            this.startsWithCB.UseVisualStyleBackColor = true;
+            // 
             // SearchPrisoner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,5 +417,6 @@ namespace CRMWinApp.UserControls
         private System.Windows.Forms.ComboBox crimeTypeCB;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox oneononeCB;
+        private System.Windows.Forms.CheckBox startsWithCB;
     }
 }

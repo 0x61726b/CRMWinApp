@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CRMWinApp.Models
 {
-    public class Sentence
+    public class Punishment
     {
         public int Id { get; set; }
 
-        public int Year { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
 
-        public string Note { get; set; }
+        public Criminal Criminal { get; set; }
     }
 }
